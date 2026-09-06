@@ -19,6 +19,9 @@ export interface AuthLayoutProps {
   
   /** Optional href for the product brand link */
   brandHref?: string;
+  
+  /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
+  wordmarkSrc?: string;
 }
 
 /**
@@ -67,18 +70,19 @@ export function AuthLayout({
   children,
   LinkComponent,
   brandHref = "/",
+  wordmarkSrc,
 }: AuthLayoutProps) {
   return (
     <div className="desk-login relative min-h-screen overflow-hidden">
       {/* Decorative line motif - chaos/clarity visual element */}
       {/* Mobile: simplified version at top */}
       <svg
-        className="pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.15] lg:hidden"
+        className="pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.04] lg:hidden"
         viewBox="0 0 400 150"
         preserveAspectRatio="xMinYMin slice"
         aria-hidden
       >
-        <g fill="none" stroke="#1f2a37" strokeWidth="1.4">
+        <g fill="none" stroke="#1f2a37" strokeWidth="0.8">
           <path d="M0 30 C 100 50, 200 30, 300 50 C 350 55, 400 50, 450 55" />
           <path d="M0 50 C 120 75, 220 50, 320 75 C 370 80, 420 75, 470 80" />
           <path d="M50 100 L 400 100" />
@@ -113,6 +117,7 @@ export function AuthLayout({
           size="lg"
           href={brandHref}
           LinkComponent={LinkComponent}
+          wordmarkSrc={wordmarkSrc}
         />
         <p className="mt-2 text-sm text-[var(--orx-muted)]">{tagline}</p>
         
