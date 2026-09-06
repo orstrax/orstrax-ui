@@ -32,7 +32,7 @@ export interface AuthLayoutProps {
  * - Orstrax product branding
  * - Product tagline
  * - Large serif display title
- * - Decorative chaos/clarity line motif (left side on desktop)
+ * - Decorative chaos/clarity line motif (simplified at top on mobile, full on left side on desktop)
  * - Centered, restrained form container
  * - Footer placement
  * - Mobile-responsive layout
@@ -71,6 +71,22 @@ export function AuthLayout({
   return (
     <div className="desk-login relative min-h-screen overflow-hidden">
       {/* Decorative line motif - chaos/clarity visual element */}
+      {/* Mobile: simplified version at top */}
+      <svg
+        className="pointer-events-none absolute left-0 top-0 h-32 w-full opacity-[0.12] lg:hidden"
+        viewBox="0 0 400 120"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden
+      >
+        <g fill="none" stroke="#1f2a37" strokeWidth="1.2">
+          <path d="M20 40 C 80 60, 140 40, 200 60" />
+          <path d="M40 50 C 100 70, 160 50, 220 70" />
+          <path d="M200 80 L 380 80" />
+          <path d="M200 95 L 380 95" />
+        </g>
+      </svg>
+      
+      {/* Desktop: full version on left side */}
       <svg
         className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-[42%] opacity-[0.18] lg:block"
         viewBox="0 0 400 800"
