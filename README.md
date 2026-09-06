@@ -10,9 +10,25 @@ This package provides the reusable visual language of Orstrax Desk so other Orst
 
 ## Installation
 
+This package is distributed via **public GitHub repository** (no npm token required):
+
 ```bash
-npm install @orstrax/ui
+npm install github:orstrax/orstrax-ui#v0.1.1
 ```
+
+Or in `package.json`:
+
+```json
+{
+  "dependencies": {
+    "@orstrax/ui": "github:orstrax/orstrax-ui#v0.1.1"
+  }
+}
+```
+
+**Always pin to a specific release tag** (e.g., `#v0.1.1`), never use `#main`.
+
+See [CONSUMER_SETUP.md](./CONSUMER_SETUP.md) for complete installation and update instructions.
 
 ## Key Principles
 
@@ -308,13 +324,37 @@ Before publishing changes:
 
 If Desk looks "different but cleaner" after migration, that's a regression.
 
-## Versioning
+## Distribution & Releases
 
-This package uses semantic versioning:
+This package is distributed as a **public GitHub repository** with semantic versioning.
 
-- **Major**: Breaking API changes
-- **Minor**: New components/features (backwards compatible)
-- **Patch**: Bug fixes, visual refinements
+### Versioning
+
+- **Major** (v1.0.0): Breaking API changes
+- **Minor** (v0.2.0): New components/features (backwards compatible)
+- **Patch** (v0.1.1): Bug fixes, visual refinements
+
+### Release Workflow
+
+1. **Make changes** in a feature branch
+2. **Bump version** in `package.json`
+3. **Create PR** and get it reviewed
+4. **Merge to main** → GitHub Actions automatically:
+   - Runs build and tests
+   - Creates a git tag (e.g., `v0.2.0`)
+   - Creates a GitHub release
+
+### Consumer Apps Receive Updates
+
+Consumer repos (Desk, Orders, Admin, Product Hub) use **Renovate or Dependabot** to automatically receive update PRs:
+
+1. New version released (e.g., `v0.2.0`)
+2. Renovate creates PR in consumer app
+3. Consumer CI runs (build, lint, tests)
+4. Review and merge
+5. Vercel auto-deploys
+
+See [CONSUMER_SETUP.md](./CONSUMER_SETUP.md) for complete setup.
 
 ## License
 

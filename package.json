@@ -1,6 +1,6 @@
 {
   "name": "@orstrax/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Shared design system for Orstrax-branded products, extracted from Orstrax Desk",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -32,7 +32,15 @@
     "typescript"
   ],
   "author": "Orstrax LLC",
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orstrax/orstrax-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/orstrax/orstrax-ui/issues"
+  },
+  "homepage": "https://github.com/orstrax/orstrax-ui#readme",
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
     "react-dom": "^18.0.0 || ^19.0.0"
