@@ -26,8 +26,14 @@ Automatic publishing workflow is ready but requires one-time npm token setup.
 
 1. Go to https://www.npmjs.com/settings/[your-username]/tokens
 2. Click **"Generate New Token"**
-3. Select **"Automation"** token type
-4. Copy the token (starts with `npm_...`)
+3. Select **"Granular Access Token"** (recommended)
+4. Configure the token:
+   - **Token name**: `GitHub Actions - orstrax-ui`
+   - **Expiration**: Choose expiration (90 days, 1 year, or custom)
+   - **Packages and scopes**: Select "Read and write" for `@orstrax/ui`
+   - **Organizations**: Select the `@orstrax` organization if applicable
+5. Click **"Generate token"**
+6. Copy the token (starts with `npm_...`) - you won't see it again!
 
 ### Step 2: Add Token to GitHub
 
