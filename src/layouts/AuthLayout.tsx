@@ -73,16 +73,17 @@ export function AuthLayout({
       {/* Decorative line motif - chaos/clarity visual element */}
       {/* Mobile: simplified version at top */}
       <svg
-        className="pointer-events-none absolute left-0 top-0 h-32 w-full opacity-[0.12] lg:hidden"
-        viewBox="0 0 400 120"
-        preserveAspectRatio="xMidYMid slice"
+        className="pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.15] lg:hidden"
+        viewBox="0 0 400 150"
+        preserveAspectRatio="xMinYMin slice"
         aria-hidden
       >
-        <g fill="none" stroke="#1f2a37" strokeWidth="1.2">
-          <path d="M20 40 C 80 60, 140 40, 200 60" />
-          <path d="M40 50 C 100 70, 160 50, 220 70" />
-          <path d="M200 80 L 380 80" />
-          <path d="M200 95 L 380 95" />
+        <g fill="none" stroke="#1f2a37" strokeWidth="1.4">
+          <path d="M0 30 C 100 50, 200 30, 300 50 C 350 55, 400 50, 450 55" />
+          <path d="M0 50 C 120 75, 220 50, 320 75 C 370 80, 420 75, 470 80" />
+          <path d="M50 100 L 400 100" />
+          <path d="M50 120 L 400 120" />
+          <path d="M50 135 L 350 135" />
         </g>
       </svg>
       
