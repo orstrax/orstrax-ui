@@ -1,0 +1,154 @@
+/**
+ * Orstrax UI Styles
+ * 
+ * Core CSS for Orstrax-branded products.
+ * Extracted from Orstrax Desk production UI.
+ * 
+ * IMPORTANT: Consuming apps must also load:
+ * - Inter font (UI text)
+ * - Source Serif 4 font (display headings)
+ * 
+ * Example (Next.js):
+ * ```tsx
+ * import { Inter, Source_Serif_4 } from "next/font/google";
+ * 
+ * const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+ * const sourceSerif = Source_Serif_4({ subsets: ["latin"], variable: "--font-source-serif" });
+ * 
+ * <html className={`${inter.variable} ${sourceSerif.variable}`}>
+ * ```
+ */
+
+/* CSS Custom Properties */
+:root {
+  --orx-bg: #f4efe6;
+  --orx-surface: #fffcf7;
+  --orx-ink: #1c1915;
+  --orx-muted: #6f675c;
+  --orx-line: #e4dcd0;
+  --orx-navy: #1f2a37;
+  --orx-accent: #2f5da8;
+  --orx-radius: 0.625rem;
+}
+
+/* Desk App Context */
+.desk-app {
+  --orx-bg: #f4efe6;
+  --orx-surface: #fffcf7;
+  --orx-ink: #1c1915;
+  --orx-muted: #6f675c;
+  --orx-line: #e4dcd0;
+  --orx-navy: #1f2a37;
+  --orx-accent: #2f5da8;
+  --orx-radius: 0.625rem;
+  background: var(--orx-bg);
+  color: var(--orx-ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Display Typography */
+.desk-display {
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Input Styling */
+.desk-input {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--orx-line);
+  background: white;
+  padding: 0.5rem 0.75rem;
+  color: var(--orx-ink);
+}
+
+.desk-input:focus {
+  outline: 2px solid var(--orx-accent);
+  outline-offset: 2px;
+}
+
+/* Auth/Login Layout */
+.desk-login,
+.desk-marketing {
+  --orx-bg: #f4efe6;
+  --orx-surface: #fffcf7;
+  --orx-ink: #1c1915;
+  --orx-muted: #6f675c;
+  --orx-line: #e4dcd0;
+  --orx-navy: #1f2a37;
+  --orx-accent: #2f5da8;
+  background: var(--orx-bg);
+  color: var(--orx-ink);
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Marketing Header */
+.desk-marketing-header {
+  background: color-mix(in srgb, var(--orx-bg) 88%, white);
+  border-bottom: 1px solid var(--orx-line);
+}
+
+/* Focus Visible */
+:focus-visible {
+  outline: 2px solid var(--orx-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Color Overrides for Desk App Context */
+.desk-app .bg-blue-700,
+.desk-app .bg-blue-800 {
+  background-color: var(--orx-navy) !important;
+}
+
+.desk-app .bg-blue-50,
+.desk-app .bg-blue-100 {
+  background-color: color-mix(in srgb, var(--orx-navy) 8%, var(--orx-surface)) !important;
+}
+
+.desk-app .text-blue-700,
+.desk-app .text-blue-800 {
+  color: var(--orx-accent) !important;
+}
+
+.desk-app .border-blue-100,
+.desk-app .border-blue-200 {
+  border-color: var(--orx-line) !important;
+}
+
+.desk-app .text-slate-900,
+.desk-app .text-slate-800 {
+  color: var(--orx-ink) !important;
+}
+
+.desk-app .text-slate-500,
+.desk-app .text-slate-600,
+.desk-app .text-slate-400 {
+  color: var(--orx-muted) !important;
+}
+
+.desk-app .border-slate-200,
+.desk-app .border-slate-300 {
+  border-color: var(--orx-line) !important;
+}
+
+.desk-app .bg-slate-50,
+.desk-app .bg-slate-100 {
+  background-color: var(--orx-bg) !important;
+}
+
+.desk-app .divide-slate-200 > :not(:last-child) {
+  border-color: var(--orx-line);
+}
+
+.desk-app :focus-visible {
+  outline-color: var(--orx-accent);
+}
