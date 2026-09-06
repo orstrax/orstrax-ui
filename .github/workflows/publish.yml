@@ -1,0 +1,63 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build package
+        run: npm run build
+      
+      - name: Check if version changed
+        id: version-check
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          
+          # Check if this version is already published
+          if npm view @orstrax/ui@$CURRENT_VERSION version 2>/dev/null; then
+            echo "version_exists=true" >> $GITHUB_OUTPUT
+            echo "Version $CURRENT_VERSION already exists on npm"
+          else
+            echo "version_exists=false" >> $GITHUB_OUTPUT
+            echo "Version $CURRENT_VERSION is new, will publish"
+          fi
+      
+      - name: Publish to npm
+        if: steps.version-check.outputs.version_exists == 'false'
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      - name: Create git tag
+        if: steps.version-check.outputs.version_exists == 'false'
+        run: |
+          VERSION=${{ steps.version-check.outputs.current_version }}
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v$VERSION" -m "Release v$VERSION"
+          git push origin "v$VERSION"
+      
+      - name: Skip publish
+        if: steps.version-check.outputs.version_exists == 'true'
+        run: echo "Skipping publish - version already exists. Bump version in package.json to publish."
