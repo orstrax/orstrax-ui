@@ -29,6 +29,9 @@ export interface OrstraxProductBrandProps {
   
   /** Optional link component (e.g., Next.js Link) */
   LinkComponent?: React.ElementType;
+  
+  /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
+  wordmarkSrc?: string;
 }
 
 /**
@@ -58,13 +61,14 @@ export function OrstraxProductBrand({
   tone = "ink",
   className = "",
   LinkComponent,
+  wordmarkSrc,
 }: OrstraxProductBrandProps) {
   const scale = SIZES[size];
   
   const content = (
     <span className={`inline-flex items-end ${scale.gap} ${className}`}>
       <img
-        src={orstraxWordmark}
+        src={wordmarkSrc || orstraxWordmark}
         alt="Orstrax"
         className={`block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`}
       />
