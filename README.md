@@ -308,13 +308,38 @@ Before publishing changes:
 
 If Desk looks "different but cleaner" after migration, that's a regression.
 
-## Versioning
+## Versioning & Publishing
 
-This package uses semantic versioning:
+This package uses semantic versioning and **automatic publishing**:
 
 - **Major**: Breaking API changes
 - **Minor**: New components/features (backwards compatible)
 - **Patch**: Bug fixes, visual refinements
+
+### Automatic Publishing Workflow
+
+Changes merged to `main` automatically publish to npm:
+
+1. **Make your changes** in a feature branch
+2. **Bump the version** in `package.json` according to semantic versioning
+3. **Create a PR** and get it reviewed
+4. **Merge to main** - GitHub Actions automatically:
+   - Builds the package
+   - Publishes to npm (if version is new)
+   - Creates a git tag for the release
+
+### Updating Consuming Applications
+
+After a new version is published, update your application:
+
+```bash
+# In your app (Desk, Orders, Admin, etc.)
+npm update @orstrax/ui
+npm run build
+# Deploy
+```
+
+**Note:** The workflow only publishes if the version in `package.json` has been bumped. If you forget to bump the version, the publish will be skipped.
 
 ## License
 
