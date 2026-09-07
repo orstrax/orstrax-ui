@@ -382,7 +382,6 @@ html[data-orstrax-theme] :focus-visible {
   color: var(--orstrax-white);
 }
 .orstrax-topbar {
-  display: flex;
   align-items: center;
   gap: 0.75rem;
   border-bottom: 1px solid var(--orstrax-border);
@@ -584,7 +583,7 @@ html[data-orstrax-theme] {
   --foreground: var(--orstrax-text);
   --card: var(--orstrax-surface);
   --card-foreground: var(--orstrax-text);
-  --popover: var(--orstrax-surface);
+  --popover: var(--orstrax-white);
   --popover-foreground: var(--orstrax-text);
   --primary: var(--orstrax-nav);
   --primary-foreground: var(--orstrax-white);
@@ -607,5 +606,10 @@ html[data-orstrax-theme] {
   --sidebar-accent-foreground: var(--orstrax-text);
   --sidebar-border: var(--orstrax-border);
   --sidebar-ring: var(--orstrax-accent);
+}
+html[data-orstrax-theme] [data-slot=dialog-content],
+html[data-orstrax-theme] [data-slot=sheet-content],
+html[data-orstrax-theme] [data-slot=alert-dialog-content] {
+  background: var(--orstrax-white) !important;
 }
 /*# sourceMappingURL=styles.css.map */
