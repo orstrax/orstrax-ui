@@ -79,7 +79,7 @@ html:has(.orstrax-auth),
 html:has(.desk-login),
 html:has(.desk-marketing),
 html[data-orstrax-theme] {
-  background: var(--orstrax-bg);
+  background: var(--orstrax-surface);
 }
 
 body:has(.orstrax-app),
@@ -88,7 +88,7 @@ body:has(.orstrax-auth),
 body:has(.desk-login),
 body:has(.desk-marketing),
 html[data-orstrax-theme] body {
-  background: var(--orstrax-bg);
+  background: var(--orstrax-surface);
   color: var(--orstrax-text);
   font-family: var(--orstrax-font-ui);
 }
@@ -178,6 +178,10 @@ html[data-orstrax-theme] body {
 .orstrax-auth .orstrax-lockup-name,
 .desk-login .orstrax-lockup-name {
   color: var(--orstrax-accent);
+}
+
+.desk-help .orstrax-lockup-name {
+  color: var(--desk-accent);
 }
 
 .orstrax-lockup-name--muted,
@@ -567,6 +571,7 @@ html[data-orstrax-theme] :focus-visible {
   border-bottom: 1px solid var(--orstrax-border);
   background: var(--orstrax-surface);
   padding: 0.25rem 1rem;
+  padding-top: calc(0.25rem + env(safe-area-inset-top, 0px));
 }
 
 /* -------------------------------------------------------------------------- */
