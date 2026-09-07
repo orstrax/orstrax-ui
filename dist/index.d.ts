@@ -1,6 +1,10 @@
 export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin } from './runtime.js';
 import React from 'react';
 
+/** Map Firebase Auth client errors to customer-safe copy. Never surface raw Firebase strings. */
+declare function firebaseAuthCode(error: unknown): string | null;
+declare function friendlyAuthMessage(error: unknown, fallback?: string): string;
+
 /**
  * Orstrax Design Tokens
  *
@@ -279,96 +283,26 @@ declare function TextLink({ href, children, LinkComponent }: TextLinkProps): Rea
 declare function initials(name: string): string;
 
 interface AuthLayoutProps {
-    /** Product name (e.g., "Desk", "Orders", "Admin") */
     productName: string;
-    /** Product tagline to show under the brand */
     tagline: string;
-    /** Large serif title (e.g., "Welcome back.", "Create your account.") */
     title: string;
-    /** Auth form or content */
     children: React.ReactNode;
-    /** Optional link component (e.g., Next.js Link) for brand href */
     LinkComponent?: React.ElementType;
-    /** Optional href for the product brand link */
     brandHref?: string;
-    /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
     wordmarkSrc?: string;
+    footer?: React.ReactNode;
 }
 /**
- * AuthLayout
- *
- * The canonical Orstrax authentication page layout.
- * Extracted directly from the Orstrax Desk login/signup pages.
- *
- * Features:
- * - Warm cream background
- * - Orstrax product branding
- * - Product tagline
- * - Large serif display title
- * - Decorative chaos/clarity line motif (simplified at top on mobile, full on left side on desktop)
- * - Centered, restrained form container
- * - Footer placement
- * - Mobile-responsive layout
- * - Generous but not wasteful spacing
- *
- * This component owns the VISUAL SHELL only.
- * Each product keeps its own authentication logic.
- *
- * @example
- * ```tsx
- * <AuthLayout
- *   productName="Desk"
- *   tagline="Support everything that builds forward."
- *   title="Welcome back."
- * >
- *   <DeskLoginForm />
- * </AuthLayout>
- *
- * <AuthLayout
- *   productName="Orders"
- *   tagline="Smart order management."
- *   title="Create your account."
- * >
- *   <OrdersSignupForm />
- * </AuthLayout>
- * ```
+ * Canonical Orstrax auth shell. Visuals come from the hosted theme CSS.
+ * Product apps only pass identity + form content.
  */
-declare function AuthLayout({ productName, tagline, title, children, LinkComponent, brandHref, wordmarkSrc, }: AuthLayoutProps): React.JSX.Element;
-interface AuthFooterProps {
+declare function AuthLayout({ productName, tagline, title, children, LinkComponent, brandHref, wordmarkSrc, footer, }: AuthLayoutProps): React.JSX.Element;
+declare function AuthFooter({ children }: {
     children: React.ReactNode;
-}
-/**
- * AuthFooter
- *
- * Optional footer component for auth pages.
- * Matches the Desk auth footer styling.
- *
- * @example
- * ```tsx
- * <AuthFooter>
- *   <a href="/privacy">Privacy</a>
- *   <a href="/help">Help</a>
- *   <span>© 2026 Orstrax LLC</span>
- * </AuthFooter>
- * ```
- */
-declare function AuthFooter({ children }: AuthFooterProps): React.JSX.Element;
-interface AuthDescriptionProps {
+}): React.JSX.Element;
+declare function AuthDescription({ children }: {
     children: React.ReactNode;
-}
-/**
- * AuthDescription
- *
- * Optional description/subtitle below the title.
- *
- * @example
- * ```tsx
- * <AuthDescription>
- *   Sign in to manage your help centers.
- * </AuthDescription>
- * ```
- */
-declare function AuthDescription({ children }: AuthDescriptionProps): React.JSX.Element;
+}): React.JSX.Element;
 
 interface NavItem {
     href: string;
@@ -468,4 +402,4 @@ interface OrstraxAppShellProps {
  */
 declare function OrstraxAppShell({ productName, tagline, navigation, user, accountMenu, headerContent, children, LinkComponent, renderAccountMenu, helpHref, }: OrstraxAppShellProps): React.JSX.Element;
 
-export { AuthDescription, type AuthDescriptionProps, AuthFooter, type AuthFooterProps, AuthLayout, type AuthLayoutProps, Badge, type BadgeProps, Button, type ButtonProps, Card, type CardProps, Divider, EmptyState, type EmptyStateProps, FormField, type FormFieldProps, Input, type InputProps, Metric, type MetricProps, type NavGroup, type NavItem, OrstraxAppShell, type OrstraxAppShellProps, OrstraxProductBrand, type OrstraxProductBrandProps, PageHeader, type PageHeaderProps, Panel, PrimaryButton, SecondaryButton, TextLink, type TextLinkProps, Textarea, type TextareaProps, type User, colors, cssVars, initials, radius, spacing, typography };
+export { AuthDescription, AuthFooter, AuthLayout, type AuthLayoutProps, Badge, type BadgeProps, Button, type ButtonProps, Card, type CardProps, Divider, EmptyState, type EmptyStateProps, FormField, type FormFieldProps, Input, type InputProps, Metric, type MetricProps, type NavGroup, type NavItem, OrstraxAppShell, type OrstraxAppShellProps, OrstraxProductBrand, type OrstraxProductBrandProps, PageHeader, type PageHeaderProps, Panel, PrimaryButton, SecondaryButton, TextLink, type TextLinkProps, Textarea, type TextareaProps, type User, colors, cssVars, firebaseAuthCode, friendlyAuthMessage, initials, radius, spacing, typography };

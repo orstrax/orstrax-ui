@@ -6,7 +6,7 @@ var react = require('react');
 
 // src/runtime.ts
 var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.0";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.1";
 var ORSTRAX_URLS = {
   company: "https://orstrax.com",
   hub: "https://www.orstrax.io",
@@ -34,6 +34,46 @@ function orstraxAssetHref(file) {
 }
 var ORSTRAX_WORDMARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-wordmark.png`;
 var ORSTRAX_MARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-mark.png`;
+
+// src/auth.ts
+var MESSAGES = {
+  "auth/invalid-credential": "Incorrect email or password.",
+  "auth/wrong-password": "Incorrect email or password.",
+  "auth/user-not-found": "Incorrect email or password.",
+  "auth/invalid-email": "Enter a valid email address.",
+  "auth/user-disabled": "This account has been disabled. Contact support if you need help.",
+  "auth/too-many-requests": "Too many attempts. Wait a moment and try again.",
+  "auth/network-request-failed": "Network error. Check your connection and try again.",
+  "auth/email-already-in-use": "An account with this email already exists. Sign in instead.",
+  "auth/weak-password": "Use a stronger password (at least 8 characters).",
+  "auth/operation-not-allowed": "Sign-in is temporarily unavailable. Try again shortly.",
+  "auth/expired-action-code": "This link has expired. Request a new one.",
+  "auth/invalid-action-code": "This link is invalid or has already been used. Request a new one.",
+  "auth/missing-password": "Enter your password.",
+  "auth/missing-email": "Enter your email.",
+  "auth/requires-recent-login": "For security, sign in again and retry.",
+  "auth/popup-closed-by-user": "Sign-in was cancelled.",
+  "auth/api-key-not-valid": "Sign-in is temporarily unavailable. Try again shortly.",
+  "auth/api-key-not-valid.-": "Sign-in is temporarily unavailable. Try again shortly.",
+  "auth/unauthorized-domain": "Sign-in is temporarily unavailable. Try again shortly.",
+  "auth/invalid-api-key": "Sign-in is temporarily unavailable. Try again shortly."
+};
+function firebaseAuthCode(error) {
+  if (!error || typeof error !== "object") return null;
+  const code = "code" in error ? String(error.code || "") : "";
+  if (code.startsWith("auth/")) return code.replace(/\.$/, "");
+  const message = error instanceof Error ? error.message : String(error);
+  const match = message.match(/auth\/[a-z0-9.-]+/i);
+  return match ? match[0].toLowerCase().replace(/\.$/, "") : null;
+}
+function friendlyAuthMessage(error, fallback = "Something went wrong. Try again.") {
+  const code = firebaseAuthCode(error);
+  if (code && MESSAGES[code]) return MESSAGES[code];
+  const message = error instanceof Error ? error.message : "";
+  if (!message) return fallback;
+  if (/firebase/i.test(message) || /auth\//i.test(message)) return fallback;
+  return message;
+}
 
 // src/tokens/index.ts
 var colors = {
@@ -307,13 +347,15 @@ function AuthLayout({
   children,
   LinkComponent,
   brandHref = "/",
-  wordmarkSrc
+  wordmarkSrc,
+  footer
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "orstrax-auth desk-login relative min-h-screen overflow-hidden", children: [
+  const year = (/* @__PURE__ */ new Date()).getFullYear();
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "orstrax-auth desk-login", children: [
     /* @__PURE__ */ jsxRuntime.jsx(
       "svg",
       {
-        className: "pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.04] lg:hidden",
+        className: "orstrax-auth-motif orstrax-auth-motif-mobile",
         viewBox: "0 0 400 150",
         preserveAspectRatio: "xMinYMin slice",
         "aria-hidden": true,
@@ -329,7 +371,7 @@ function AuthLayout({
     /* @__PURE__ */ jsxRuntime.jsx(
       "svg",
       {
-        className: "pointer-events-none absolute inset-y-0 left-0 hidden h-full w-[42%] opacity-[0.18] lg:block",
+        className: "orstrax-auth-motif orstrax-auth-motif-desktop",
         viewBox: "0 0 400 800",
         "aria-hidden": true,
         children: /* @__PURE__ */ jsxRuntime.jsxs("g", { fill: "none", stroke: "#1f2a37", strokeWidth: "1.2", children: [
@@ -344,7 +386,7 @@ function AuthLayout({
         ] })
       }
     ),
-    /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "relative mx-auto flex min-h-screen max-w-lg flex-col justify-center px-6 py-16", children: [
+    /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "orstrax-auth-panel", children: [
       /* @__PURE__ */ jsxRuntime.jsx(
         OrstraxProductBrand,
         {
@@ -355,17 +397,26 @@ function AuthLayout({
           wordmarkSrc
         }
       ),
-      /* @__PURE__ */ jsxRuntime.jsx("p", { className: "mt-2 text-sm text-[var(--orx-muted)]", children: tagline }),
-      /* @__PURE__ */ jsxRuntime.jsx("h1", { className: "orstrax-display desk-display orstrax-auth-title mt-10 text-4xl text-[var(--orx-ink)]", children: title }),
-      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "mt-8", children })
+      /* @__PURE__ */ jsxRuntime.jsx("p", { className: "orstrax-auth-tagline", children: tagline }),
+      /* @__PURE__ */ jsxRuntime.jsx("h1", { className: "orstrax-display desk-display orstrax-auth-title", children: title }),
+      /* @__PURE__ */ jsxRuntime.jsx("div", { className: "orstrax-auth-form", children }),
+      footer !== void 0 ? footer : /* @__PURE__ */ jsxRuntime.jsxs(AuthFooter, { children: [
+        /* @__PURE__ */ jsxRuntime.jsx("a", { href: "https://orstrax.io/privacy", children: "Privacy" }),
+        /* @__PURE__ */ jsxRuntime.jsx("a", { href: "https://desk.orstrax.io/help", children: "Help" }),
+        /* @__PURE__ */ jsxRuntime.jsxs("span", { children: [
+          "\xA9 ",
+          year,
+          " Orstrax LLC"
+        ] })
+      ] })
     ] })
   ] });
 }
 function AuthFooter({ children }) {
-  return /* @__PURE__ */ jsxRuntime.jsx("footer", { className: "mt-16 flex flex-wrap gap-x-4 gap-y-2 text-xs text-[var(--orx-muted)]", children });
+  return /* @__PURE__ */ jsxRuntime.jsx("footer", { className: "orstrax-auth-footer", children });
 }
 function AuthDescription({ children }) {
-  return /* @__PURE__ */ jsxRuntime.jsx("p", { className: "mt-2 text-sm text-[var(--orx-muted)]", children });
+  return /* @__PURE__ */ jsxRuntime.jsx("p", { className: "orstrax-auth-description", children });
 }
 function OrstraxAppShell({
   productName,
@@ -525,6 +576,8 @@ exports.TextLink = TextLink;
 exports.Textarea = Textarea;
 exports.colors = colors;
 exports.cssVars = cssVars;
+exports.firebaseAuthCode = firebaseAuthCode;
+exports.friendlyAuthMessage = friendlyAuthMessage;
 exports.initials = initials;
 exports.orstraxAssetHref = orstraxAssetHref;
 exports.orstraxThemeHref = orstraxThemeHref;

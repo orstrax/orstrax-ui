@@ -9,6 +9,7 @@
  */
 
 export * from "./runtime";
+export * from "./auth";
 
 // Design tokens
 export * from "./tokens";

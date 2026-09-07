@@ -394,8 +394,42 @@ html[data-orstrax-theme] :focus-visible {
   position: relative;
   min-height: 100vh;
   overflow: hidden;
+  background: var(--orstrax-bg) !important;
+  color: var(--orstrax-text);
+  font-family: var(--orstrax-font-ui);
 }
-.orstrax-auth-panel {
+.orstrax-auth > svg:first-of-type,
+.orstrax-auth-motif-mobile {
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 10rem;
+  width: 100%;
+  opacity: 0.04;
+}
+.orstrax-auth > svg:nth-of-type(2),
+.orstrax-auth-motif-desktop {
+  pointer-events: none;
+  position: absolute;
+  inset: 0 auto 0 0;
+  display: none;
+  height: 100%;
+  width: 42%;
+  opacity: 0.18;
+}
+@media (min-width: 1024px) {
+  .orstrax-auth > svg:first-of-type,
+  .orstrax-auth-motif-mobile {
+    display: none;
+  }
+  .orstrax-auth > svg:nth-of-type(2),
+  .orstrax-auth-motif-desktop {
+    display: block;
+  }
+}
+.orstrax-auth-panel,
+.orstrax-auth > div:last-of-type {
   position: relative;
   z-index: 1;
   display: flex;
@@ -406,23 +440,35 @@ html[data-orstrax-theme] :focus-visible {
   justify-content: center;
   padding: 4rem 1.5rem;
 }
-.orstrax-auth-tagline {
+.orstrax-auth-tagline,
+.orstrax-auth > div:last-of-type > p:first-of-type {
   margin-top: 0.5rem;
   font-size: 0.875rem;
   color: var(--orstrax-text-muted);
 }
-.orstrax-auth-title {
+.orstrax-auth-description {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--orstrax-text-muted);
+}
+.orstrax-auth-title,
+.orstrax-auth h1 {
   margin-top: 2.5rem;
+  font-family: var(--orstrax-font-display);
   font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--orstrax-text);
 }
-.orstrax-auth-form {
+.orstrax-auth-form,
+.orstrax-auth > div:last-of-type > div:last-of-type {
   margin-top: 2rem;
 }
 .orstrax-auth-form > * + * {
   margin-top: 1rem;
 }
-.orstrax-auth-footer {
+.orstrax-auth-footer,
+.orstrax-auth footer {
   margin-top: 4rem;
   display: flex;
   flex-wrap: wrap;
@@ -430,12 +476,93 @@ html[data-orstrax-theme] :focus-visible {
   font-size: 0.75rem;
   color: var(--orstrax-text-muted);
 }
-.orstrax-auth-footer a {
+.orstrax-auth-footer a,
+.orstrax-auth footer a {
   color: inherit;
   text-decoration: none;
 }
-.orstrax-auth-footer a:hover {
+.orstrax-auth-footer a:hover,
+.orstrax-auth footer a:hover {
   text-decoration: underline;
+}
+.orstrax-auth label,
+.orstrax-auth [data-slot=label] {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--orstrax-text);
+}
+.orstrax-auth input:not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=file]),
+.orstrax-auth textarea,
+.orstrax-auth select {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  border-radius: var(--orstrax-radius-sm);
+  border: 1px solid var(--orstrax-border);
+  background: var(--orstrax-white);
+  padding: 0.5rem 0.75rem;
+  color: var(--orstrax-text);
+  font: inherit;
+  box-shadow: none;
+}
+.orstrax-auth input:focus,
+.orstrax-auth textarea:focus,
+.orstrax-auth select:focus {
+  outline: 2px solid var(--orstrax-accent);
+  outline-offset: 2px;
+}
+.orstrax-auth button[type=submit],
+.orstrax-auth form button[data-slot=button]:not([data-variant=outline]):not([data-variant=ghost]) {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--orstrax-radius-sm);
+  background: var(--orstrax-nav);
+  color: var(--orstrax-white);
+  padding: 0.625rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.orstrax-auth [role=tablist],
+.orstrax-auth .orstrax-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  border: 1px solid var(--orstrax-border);
+  border-radius: var(--orstrax-radius-sm);
+  background: var(--orstrax-surface);
+  height: auto;
+}
+.orstrax-auth [role=tab],
+.orstrax-auth .orstrax-tab {
+  border: 0;
+  border-radius: calc(var(--orstrax-radius-sm) - 2px);
+  background: transparent;
+  color: var(--orstrax-text-muted);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  box-shadow: none;
+}
+.orstrax-auth [role=tab][data-state=active],
+.orstrax-auth [role=tab][aria-selected=true] {
+  background: color-mix(in srgb, var(--orstrax-bg) 70%, white);
+  color: var(--orstrax-text);
+}
+.orstrax-auth a,
+.orstrax-auth button[type=button].orstrax-link,
+.orstrax-auth .orstrax-link {
+  color: var(--orstrax-accent);
+}
+.orstrax-auth img[alt=Orstrax] {
+  height: 2.25rem;
+  width: auto;
+  max-width: 11rem;
+  object-fit: contain;
+  object-position: left;
 }
 html[data-orstrax-theme] {
   --background: var(--orstrax-bg);

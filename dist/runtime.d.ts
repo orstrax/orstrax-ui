@@ -5,7 +5,7 @@
  * This module only builds those URLs — it does not bundle the theme.
  */
 declare const ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-declare const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.0";
+declare const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.1";
 declare const ORSTRAX_URLS: {
     readonly company: "https://orstrax.com";
     readonly hub: "https://www.orstrax.io";

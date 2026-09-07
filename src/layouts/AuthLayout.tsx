@@ -2,66 +2,19 @@ import React from "react";
 import { OrstraxProductBrand } from "../components/OrstraxProductBrand";
 
 export interface AuthLayoutProps {
-  /** Product name (e.g., "Desk", "Orders", "Admin") */
   productName: string;
-  
-  /** Product tagline to show under the brand */
   tagline: string;
-  
-  /** Large serif title (e.g., "Welcome back.", "Create your account.") */
   title: string;
-  
-  /** Auth form or content */
   children: React.ReactNode;
-  
-  /** Optional link component (e.g., Next.js Link) for brand href */
   LinkComponent?: React.ElementType;
-  
-  /** Optional href for the product brand link */
   brandHref?: string;
-  
-  /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
   wordmarkSrc?: string;
+  footer?: React.ReactNode;
 }
 
 /**
- * AuthLayout
- * 
- * The canonical Orstrax authentication page layout.
- * Extracted directly from the Orstrax Desk login/signup pages.
- * 
- * Features:
- * - Warm cream background
- * - Orstrax product branding
- * - Product tagline
- * - Large serif display title
- * - Decorative chaos/clarity line motif (simplified at top on mobile, full on left side on desktop)
- * - Centered, restrained form container
- * - Footer placement
- * - Mobile-responsive layout
- * - Generous but not wasteful spacing
- * 
- * This component owns the VISUAL SHELL only.
- * Each product keeps its own authentication logic.
- * 
- * @example
- * ```tsx
- * <AuthLayout
- *   productName="Desk"
- *   tagline="Support everything that builds forward."
- *   title="Welcome back."
- * >
- *   <DeskLoginForm />
- * </AuthLayout>
- * 
- * <AuthLayout
- *   productName="Orders"
- *   tagline="Smart order management."
- *   title="Create your account."
- * >
- *   <OrdersSignupForm />
- * </AuthLayout>
- * ```
+ * Canonical Orstrax auth shell. Visuals come from the hosted theme CSS.
+ * Product apps only pass identity + form content.
  */
 export function AuthLayout({
   productName,
@@ -71,13 +24,13 @@ export function AuthLayout({
   LinkComponent,
   brandHref = "/",
   wordmarkSrc,
+  footer,
 }: AuthLayoutProps) {
+  const year = new Date().getFullYear();
   return (
-    <div className="orstrax-auth desk-login relative min-h-screen overflow-hidden">
-      {/* Decorative line motif - chaos/clarity visual element */}
-      {/* Mobile: simplified version at top - organic curves transitioning to calm */}
+    <div className="orstrax-auth desk-login">
       <svg
-        className="pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.04] lg:hidden"
+        className="orstrax-auth-motif orstrax-auth-motif-mobile"
         viewBox="0 0 400 150"
         preserveAspectRatio="xMinYMin slice"
         aria-hidden
@@ -90,10 +43,8 @@ export function AuthLayout({
           <path d="M40 128 C 120 130, 240 129, 340 131 C 400 130, 460 132, 480 131" />
         </g>
       </svg>
-      
-      {/* Desktop: full version on left side */}
       <svg
-        className="pointer-events-none absolute inset-y-0 left-0 hidden h-full w-[42%] opacity-[0.18] lg:block"
+        className="orstrax-auth-motif orstrax-auth-motif-desktop"
         viewBox="0 0 400 800"
         aria-hidden
       >
@@ -108,10 +59,7 @@ export function AuthLayout({
           <path d="M200 525 L 360 525" />
         </g>
       </svg>
-      
-      {/* Content container */}
-      <div className="relative mx-auto flex min-h-screen max-w-lg flex-col justify-center px-6 py-16">
-        {/* Brand and tagline */}
+      <div className="orstrax-auth-panel">
         <OrstraxProductBrand
           productName={productName}
           size="lg"
@@ -119,61 +67,27 @@ export function AuthLayout({
           LinkComponent={LinkComponent}
           wordmarkSrc={wordmarkSrc}
         />
-        <p className="mt-2 text-sm text-[var(--orx-muted)]">{tagline}</p>
-        
-        {/* Display title */}
-        <h1 className="orstrax-display desk-display orstrax-auth-title mt-10 text-4xl text-[var(--orx-ink)]">{title}</h1>
-        
-        {/* Form/content */}
-        <div className="mt-8">{children}</div>
+        <p className="orstrax-auth-tagline">{tagline}</p>
+        <h1 className="orstrax-display desk-display orstrax-auth-title">{title}</h1>
+        <div className="orstrax-auth-form">{children}</div>
+        {footer !== undefined ? (
+          footer
+        ) : (
+          <AuthFooter>
+            <a href="https://orstrax.io/privacy">Privacy</a>
+            <a href="https://desk.orstrax.io/help">Help</a>
+            <span>© {year} Orstrax LLC</span>
+          </AuthFooter>
+        )}
       </div>
     </div>
   );
 }
 
-export interface AuthFooterProps {
-  children: React.ReactNode;
+export function AuthFooter({ children }: { children: React.ReactNode }) {
+  return <footer className="orstrax-auth-footer">{children}</footer>;
 }
 
-/**
- * AuthFooter
- * 
- * Optional footer component for auth pages.
- * Matches the Desk auth footer styling.
- * 
- * @example
- * ```tsx
- * <AuthFooter>
- *   <a href="/privacy">Privacy</a>
- *   <a href="/help">Help</a>
- *   <span>© 2026 Orstrax LLC</span>
- * </AuthFooter>
- * ```
- */
-export function AuthFooter({ children }: AuthFooterProps) {
-  return (
-    <footer className="mt-16 flex flex-wrap gap-x-4 gap-y-2 text-xs text-[var(--orx-muted)]">
-      {children}
-    </footer>
-  );
-}
-
-export interface AuthDescriptionProps {
-  children: React.ReactNode;
-}
-
-/**
- * AuthDescription
- * 
- * Optional description/subtitle below the title.
- * 
- * @example
- * ```tsx
- * <AuthDescription>
- *   Sign in to manage your help centers.
- * </AuthDescription>
- * ```
- */
-export function AuthDescription({ children }: AuthDescriptionProps) {
-  return <p className="mt-2 text-sm text-[var(--orx-muted)]">{children}</p>;
+export function AuthDescription({ children }: { children: React.ReactNode }) {
+  return <p className="orstrax-auth-description">{children}</p>;
 }
