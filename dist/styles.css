@@ -415,14 +415,14 @@ html[data-orstrax-theme] :focus-visible {
 .orstrax-auth > svg:nth-of-type(2),
 .orstrax-auth > svg:only-of-type {
   display: block !important;
-  left: -18%;
+  left: -20%;
   right: auto;
   top: auto;
-  bottom: -12%;
-  width: 18rem;
-  height: 22rem;
+  bottom: -6%;
+  width: min(22rem, 88vw);
+  height: 70vh;
   max-width: none;
-  opacity: 0.08;
+  opacity: 0.11;
 }
 @media (min-width: 1024px) {
   .orstrax-auth-motif-desktop,
@@ -445,8 +445,15 @@ html[data-orstrax-theme] :focus-visible {
   max-width: 32rem;
   margin: 0 auto;
   flex-direction: column;
-  justify-content: center;
-  padding: 4rem 1.5rem;
+  justify-content: flex-start;
+  padding: 2.5rem 1.5rem 3rem;
+}
+@media (min-width: 1024px) {
+  .orstrax-auth-panel,
+  .orstrax-auth > div:last-of-type {
+    justify-content: center;
+    padding: 4rem 1.5rem;
+  }
 }
 .orstrax-auth-tagline,
 .orstrax-auth > div:last-of-type > p:first-of-type {

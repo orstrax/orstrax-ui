@@ -2,7 +2,7 @@
 
 // src/runtime.ts
 var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.2";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.3";
 var ORSTRAX_URLS = {
   company: "https://orstrax.com",
   hub: "https://www.orstrax.io",
