@@ -1,6 +1,6 @@
 {
   "name": "@orstrax/ui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Shared design system for Orstrax-branded products, extracted from Orstrax Desk",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

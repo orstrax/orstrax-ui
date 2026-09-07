@@ -11,6 +11,6 @@ export default defineConfig({
   minify: false,
   treeshake: true,
   loader: {
-    ".png": "file",
+    ".png": "dataurl",
   },
 });
