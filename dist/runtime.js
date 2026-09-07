@@ -9,7 +9,7 @@ var ORSTRAX_URLS = {
   desk: "https://desk.orstrax.io",
   admin: "https://admin.orstrax.io",
   orders: "https://orderflow.orstrax.io",
-  ordersHelp: "https://desk.orstrax.io/orders",
+  ordersHelp: "https://desk.orstrax.io/orderflow",
   ui: ORSTRAX_UI_DEFAULT_ORIGIN
 };
 function readEnv(name) {

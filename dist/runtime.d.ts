@@ -12,7 +12,7 @@ declare const ORSTRAX_URLS: {
     readonly desk: "https://desk.orstrax.io";
     readonly admin: "https://admin.orstrax.io";
     readonly orders: "https://orderflow.orstrax.io";
-    readonly ordersHelp: "https://desk.orstrax.io/orders";
+    readonly ordersHelp: "https://desk.orstrax.io/orderflow";
     readonly ui: "https://ui.orstrax.io";
 };
 declare function orstraxUiOrigin(): string;
