@@ -1,365 +1,60 @@
-# @orstrax/ui
+# Orstrax UI
 
-Shared design system for Orstrax-branded products, extracted directly from **Orstrax Desk** production UI.
+Central **runtime theme** for Orstrax-branded software.
 
-## Overview
+This is not “install a package and copy styles at build time.” Consumer apps load the hosted stylesheet and canonical brand assets from one deployed origin. Changing the promoted theme or the wordmark file here is how every Orstrax-branded app receives the visual change.
 
-This package provides the reusable visual language of Orstrax Desk so other Orstrax-branded products (Orders, Admin, Product Hub) can maintain visual consistency within the Orstrax family.
+Independent brands (Ecloras, Financial Fern, Sunday Maker) must not load this theme.
 
-**Important:** Desk is the **canonical visual reference**. This package formalizes what already exists and works in production.
+## Canonical host
 
-## Installation
+Production origin: `https://ui.orstrax.io`
 
-This package is distributed via **public GitHub repository** (no npm token required):
+Until DNS is attached, the Vercel deployment for this repo is the asset origin. Apps override with `NEXT_PUBLIC_ORSTRAX_UI_ORIGIN`.
 
-```bash
-npm install github:orstrax/orstrax-ui#v0.1.1
-```
+| Resource | URL |
+|---|---|
+| Pinned theme | `https://ui.orstrax.io/theme/v1.0.0/orstrax.css` |
+| Promoted current | `https://ui.orstrax.io/theme/current/orstrax.css` |
+| Wordmark | `https://ui.orstrax.io/assets/orstrax-wordmark.png` |
+| Mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
 
-Or in `package.json`:
+Production apps should pin a **versioned** CSS URL (`/theme/v1.0.0/...`). `/theme/current/` only moves after a version is validated.
 
-```json
-{
-  "dependencies": {
-    "@orstrax/ui": "github:orstrax/orstrax-ui#v0.1.1"
-  }
-}
-```
+## Consumer apps
 
-**Always pin to a specific release tag** (e.g., `#v0.1.1`), never use `#main`.
-
-See [CONSUMER_SETUP.md](./CONSUMER_SETUP.md) for complete installation and update instructions.
-
-## Key Principles
-
-1. **Desk is the source of truth** - All visual patterns are extracted from the current Desk production UI
-2. **Preserve the existing look** - The goal is NOT to redesign Desk, but to extract its visual language
-3. **Shared visual DNA** - Same typography, colors, spacing, surfaces, navigation language
-4. **Product-specific flexibility** - Dashboards, tables, and workflows remain product-specific
-
-## What This Package Includes
-
-### Design Tokens
-- Colors (warm cream backgrounds, navy surfaces, accent blue)
-- Typography (Inter UI font, Source Serif 4 display font)
-- Spacing scale
-- Border radii
-- CSS custom properties
-
-### Brand Components
-- `OrstraxProductBrand` - Canonical wordmark + product name treatment
-
-### Layout Components
-- `AuthLayout` - Login/signup page layout
-- `OrstraxAppShell` - Internal application shell with sidebar and navigation
-
-### UI Components
-- Buttons (Primary, Secondary)
-- Form inputs (Input, Textarea, FormField)
-- Cards and Panels
-- Badges
-- Page headers
-- Empty states
-- Metrics
-- Dividers
-- Links
-
-## Usage
-
-### 1. Install Fonts
-
-Orstrax UI requires **Inter** (UI text) and **Source Serif 4** (display headings).
-
-#### Next.js Example:
+In the root layout:
 
 ```tsx
-import { Inter, Source_Serif_4 } from "next/font/google";
-import "@orstrax/ui/styles.css";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const sourceSerif = Source_Serif_4({ subsets: ["latin"], variable: "--font-source-serif" });
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en" className={`${inter.variable} ${sourceSerif.variable}`}>
-      <body>{children}</body>
-    </html>
-  );
-}
+<link rel="stylesheet" href="https://ui.orstrax.io/theme/v1.0.0/orstrax.css" />
 ```
 
-### 2. Product Branding
+Set Inter (`--font-inter`) and Source Serif 4 (`--font-source-serif`) on `<html>`. Put `data-orstrax-theme` on `<html>` so shadcn/Tailwind tokens map onto Desk values.
 
-The canonical Orstrax brand treatment: `[wordmark] + [product name]`
+Lockup pattern: canonical wordmark image + product name as text.
 
 ```tsx
-import { OrstraxProductBrand } from "@orstrax/ui";
-
-// Simple usage
-<OrstraxProductBrand productName="Orders" />
-
-// With link (using Next.js Link)
-import Link from "next/link";
-<OrstraxProductBrand 
-  productName="Orders" 
-  size="lg" 
-  href="/"
-  LinkComponent={Link}
-/>
-
-// Different sizes
-<OrstraxProductBrand productName="Admin" size="sm" />
-<OrstraxProductBrand productName="Admin" size="md" />
-<OrstraxProductBrand productName="Admin" size="lg" />
+<img src="https://ui.orstrax.io/assets/orstrax-wordmark.png" alt="Orstrax" />
+Desk
 ```
 
-### 3. Authentication Layout
+`OrstraxProductBrand` in this package does that and reads the same asset URL.
 
-The beautiful Desk login page layout, now reusable:
+## Layers
 
-```tsx
-import { AuthLayout, AuthDescription, AuthFooter } from "@orstrax/ui";
-import Link from "next/link";
+1. **Runtime theme (this host)** — tokens, CSS, wordmark, mark
+2. **Optional React package** — AuthLayout, product brand, app shell markup
+3. **Local app** — auth logic, routes, data, product UI
 
-export default function LoginPage() {
-  return (
-    <AuthLayout
-      productName="Orders"
-      tagline="Smart order management."
-      title="Welcome back."
-      LinkComponent={Link}
-    >
-      <AuthDescription>
-        Sign in to manage your orders.
-      </AuthDescription>
-      
-      <form className="mt-8 space-y-4">
-        {/* Your login form */}
-      </form>
-      
-      <AuthFooter>
-        <a href="/privacy">Privacy</a>
-        <a href="/help">Help</a>
-        <span>© 2026 Orstrax LLC</span>
-      </AuthFooter>
-    </AuthLayout>
-  );
-}
-```
+Do not recreate Desk CSS in Orders, Admin, or Hub.
 
-### 4. Application Shell
+## Releases
 
-The internal app layout with sidebar and navigation:
+1. Edit `theme/orstrax.css` and/or `public/assets/`
+2. Bump `package.json` version
+3. `npm run publish-theme` (copies CSS to `public/theme/vX.Y.Z` and `public/theme/current`)
+4. Merge to `main` — Vercel serves the files; GitHub Release tags the package for optional React consumers
 
-```tsx
-import { OrstraxAppShell } from "@orstrax/ui";
-import { ShoppingBag, Users, Settings } from "lucide-react";
-import Link from "next/link";
+Versioned CSS is immutable. Rollback: point apps at the previous `/theme/v…` URL, or revert `current` by republishing a known-good file.
 
-export default function AppLayout({ children }) {
-  return (
-    <OrstraxAppShell
-      productName="Orders"
-      tagline="Smart order management."
-      navigation={[
-        {
-          label: "Overview",
-          items: [
-            { href: "/", label: "Dashboard", icon: LayoutDashboard, active: true }
-          ]
-        },
-        {
-          label: "Orders",
-          items: [
-            { href: "/orders", label: "All orders", icon: ShoppingBag, badge: 5 },
-            { href: "/customers", label: "Customers", icon: Users }
-          ]
-        },
-        {
-          label: "Settings",
-          items: [
-            { href: "/settings", label: "Settings", icon: Settings }
-          ]
-        }
-      ]}
-      user={{
-        displayName: "Jane Doe",
-        email: "jane@example.com",
-        role: "Admin"
-      }}
-      helpHref="/help"
-      LinkComponent={Link}
-    >
-      {children}
-    </OrstraxAppShell>
-  );
-}
-```
-
-### 5. UI Components
-
-```tsx
-import {
-  Button,
-  PrimaryButton,
-  SecondaryButton,
-  Input,
-  Textarea,
-  FormField,
-  Card,
-  Badge,
-  PageHeader,
-  EmptyState,
-  Metric,
-  Divider,
-  TextLink,
-} from "@orstrax/ui";
-
-// Buttons
-<PrimaryButton>Save changes</PrimaryButton>
-<SecondaryButton>Cancel</SecondaryButton>
-<Button variant="primary">Submit</Button>
-
-// Forms
-<FormField label="Email" htmlFor="email" error={errors.email}>
-  <Input id="email" type="email" />
-</FormField>
-
-<FormField label="Message" htmlFor="message">
-  <Textarea id="message" rows={4} />
-</FormField>
-
-// Cards
-<Card className="p-6">
-  <h3>Card Title</h3>
-  <p>Card content</p>
-</Card>
-
-// Badges
-<Badge tone="success">Published</Badge>
-<Badge tone="pending">Draft</Badge>
-<Badge tone="neutral">Archived</Badge>
-
-// Page Headers
-<PageHeader
-  title="Orders"
-  description="Manage your customer orders"
-  actions={<PrimaryButton>New order</PrimaryButton>}
-/>
-
-// Empty States
-<EmptyState
-  title="No orders yet"
-  body="Orders will appear here once customers start placing them."
-  action={<PrimaryButton>Create test order</PrimaryButton>}
-/>
-
-// Metrics
-<Metric label="Total Orders" value="1,234" hint="Last 30 days" />
-```
-
-### 6. Design Tokens
-
-```tsx
-import { colors, typography, spacing, radius } from "@orstrax/ui";
-
-// Use in your styles or components
-const customStyle = {
-  backgroundColor: colors.surface,
-  color: colors.ink,
-  borderRadius: radius.default,
-  padding: spacing.lg,
-};
-```
-
-## Products Using This Package
-
-- ✅ **Orstrax Desk** (original source, migration in progress)
-- 🔄 **Orstrax Orders** (ready for migration)
-- 🔄 **Orstrax Admin** (ready for migration)
-- 🔄 **Orstrax Product Hub** (ready for migration)
-
-## Products NOT Using This Package
-
-These remain independent brands:
-- ❌ Ecloras
-- ❌ Financial Fern  
-- ❌ Sunday Maker
-
-## Contributing
-
-### Adding New Shared Components
-
-Only extract components that:
-1. Already exist in Desk with a clear, stable pattern
-2. Are genuinely reusable across multiple Orstrax products
-3. Represent core visual language, not product-specific logic
-
-### Desk-Specific vs. Shared
-
-**Extract as shared:**
-- Brand treatment
-- Auth layouts
-- App shell structure
-- Form controls
-- Cards, badges, buttons
-- Typography, colors, spacing
-- Navigation patterns
-
-**Keep product-specific:**
-- Ticket workflows
-- Order management tables
-- Shopify integrations
-- Analytics dashboards
-- Business logic
-
-## Visual Regression Testing
-
-Before publishing changes:
-1. Test in Desk - should look unchanged
-2. Compare login page before/after
-3. Compare internal UI before/after
-4. Verify mobile navigation
-5. Check forms and buttons
-
-If Desk looks "different but cleaner" after migration, that's a regression.
-
-## Distribution & Releases
-
-This package is distributed as a **public GitHub repository** with semantic versioning.
-
-### Versioning
-
-- **Major** (v1.0.0): Breaking API changes
-- **Minor** (v0.2.0): New components/features (backwards compatible)
-- **Patch** (v0.1.1): Bug fixes, visual refinements
-
-### Release Workflow
-
-1. **Make changes** in a feature branch
-2. **Bump version** in `package.json`
-3. **Create PR** and get it reviewed
-4. **Merge to main** → GitHub Actions automatically:
-   - Runs build and tests
-   - Creates a git tag (e.g., `v0.2.0`)
-   - Creates a GitHub release
-
-### Consumer Apps Receive Updates
-
-Consumer repos (Desk, Orders, Admin, Product Hub) use **Renovate or Dependabot** to automatically receive update PRs:
-
-1. New version released (e.g., `v0.2.0`)
-2. Renovate creates PR in consumer app
-3. Consumer CI runs (build, lint, tests)
-4. Review and merge
-5. Vercel auto-deploys
-
-See [CONSUMER_SETUP.md](./CONSUMER_SETUP.md) for complete setup.
-
-## License
-
-Internal use only. Not for public distribution.
-
----
-
-**Remember:** Desk is the canonical reference. This package exists to formalize what already works, not to create something new.
+Production CSS is served from Vercel, not GitHub raw.

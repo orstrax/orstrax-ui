@@ -93,6 +93,14 @@ export const radius = {
  * Use these in components for consistency with Desk.
  */
 export const cssVars = {
+  "--orstrax-bg": colors.bg,
+  "--orstrax-surface": colors.surface,
+  "--orstrax-text": colors.ink,
+  "--orstrax-text-muted": colors.muted,
+  "--orstrax-border": colors.line,
+  "--orstrax-nav": colors.navy,
+  "--orstrax-accent": colors.accent,
+  "--orstrax-radius-md": radius.default,
   "--orx-bg": colors.bg,
   "--orx-surface": colors.surface,
   "--orx-ink": colors.ink,

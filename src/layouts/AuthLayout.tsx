@@ -73,7 +73,7 @@ export function AuthLayout({
   wordmarkSrc,
 }: AuthLayoutProps) {
   return (
-    <div className="desk-login relative min-h-screen overflow-hidden">
+    <div className="orstrax-auth desk-login relative min-h-screen overflow-hidden">
       {/* Decorative line motif - chaos/clarity visual element */}
       {/* Mobile: simplified version at top - organic curves transitioning to calm */}
       <svg
@@ -122,7 +122,7 @@ export function AuthLayout({
         <p className="mt-2 text-sm text-[var(--orx-muted)]">{tagline}</p>
         
         {/* Display title */}
-        <h1 className="desk-display mt-10 text-4xl text-[var(--orx-ink)]">{title}</h1>
+        <h1 className="orstrax-display desk-display orstrax-auth-title mt-10 text-4xl text-[var(--orx-ink)]">{title}</h1>
         
         {/* Form/content */}
         <div className="mt-8">{children}</div>

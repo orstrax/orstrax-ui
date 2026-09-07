@@ -1,3 +1,4 @@
+export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin } from './runtime.mjs';
 import React from 'react';
 
 /**
@@ -83,6 +84,14 @@ declare const radius: {
  * Use these in components for consistency with Desk.
  */
 declare const cssVars: {
+    readonly "--orstrax-bg": "#f4efe6";
+    readonly "--orstrax-surface": "#fffcf7";
+    readonly "--orstrax-text": "#1c1915";
+    readonly "--orstrax-text-muted": "#6f675c";
+    readonly "--orstrax-border": "#e4dcd0";
+    readonly "--orstrax-nav": "#1f2a37";
+    readonly "--orstrax-accent": "#2f5da8";
+    readonly "--orstrax-radius-md": "0.625rem";
     readonly "--orx-bg": "#f4efe6";
     readonly "--orx-surface": "#fffcf7";
     readonly "--orx-ink": "#1c1915";

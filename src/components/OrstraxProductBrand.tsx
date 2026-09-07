@@ -1,7 +1,5 @@
 import React from "react";
-
-// Orstrax wordmark embedded as data URL to avoid asset path resolution issues when consumed as a package
-const ORSTRAX_WORDMARK_URL = "https://raw.githubusercontent.com/orstrax/orstrax-ui/main/src/assets/orstrax-wordmark.png";
+import { orstraxAssetHref } from "../runtime";
 
 /**
  * Size configurations for the product brand component.
@@ -70,7 +68,7 @@ export function OrstraxProductBrand({
   const content = (
     <span className={`inline-flex items-end ${scale.gap} ${className}`}>
       <img
-        src={wordmarkSrc || ORSTRAX_WORDMARK_URL}
+        src={wordmarkSrc || orstraxAssetHref("orstrax-wordmark.png")}
         alt="Orstrax"
         className={`block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`}
       />

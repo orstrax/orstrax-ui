@@ -4,6 +4,37 @@ var jsxRuntime = require('react/jsx-runtime');
 var clsx = require('clsx');
 var react = require('react');
 
+// src/runtime.ts
+var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.0";
+var ORSTRAX_URLS = {
+  company: "https://orstrax.com",
+  hub: "https://www.orstrax.io",
+  desk: "https://desk.orstrax.io",
+  admin: "https://admin.orstrax.io",
+  orders: "https://orders.orstrax.io",
+  ordersHelp: "https://desk.orstrax.io/orders",
+  ui: ORSTRAX_UI_DEFAULT_ORIGIN
+};
+function readEnv(name) {
+  const runtime = globalThis;
+  return runtime.process?.env?.[name];
+}
+function orstraxUiOrigin() {
+  return (readEnv("NEXT_PUBLIC_ORSTRAX_UI_ORIGIN") || ORSTRAX_UI_DEFAULT_ORIGIN).replace(/\/$/, "");
+}
+function orstraxThemeVersion() {
+  return (readEnv("NEXT_PUBLIC_ORSTRAX_THEME_VERSION") || ORSTRAX_THEME_DEFAULT_VERSION).replace(/^\/+|\/+$/g, "");
+}
+function orstraxThemeHref(version = orstraxThemeVersion()) {
+  return `${orstraxUiOrigin()}/theme/${version}/orstrax.css`;
+}
+function orstraxAssetHref(file) {
+  return `${orstraxUiOrigin()}/assets/${file.replace(/^\/+/, "")}`;
+}
+var ORSTRAX_WORDMARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-wordmark.png`;
+var ORSTRAX_MARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-mark.png`;
+
 // src/tokens/index.ts
 var colors = {
   /** Warm cream page background - #f4efe6 */
@@ -63,6 +94,14 @@ var radius = {
   full: "9999px"
 };
 var cssVars = {
+  "--orstrax-bg": colors.bg,
+  "--orstrax-surface": colors.surface,
+  "--orstrax-text": colors.ink,
+  "--orstrax-text-muted": colors.muted,
+  "--orstrax-border": colors.line,
+  "--orstrax-nav": colors.navy,
+  "--orstrax-accent": colors.accent,
+  "--orstrax-radius-md": radius.default,
   "--orx-bg": colors.bg,
   "--orx-surface": colors.surface,
   "--orx-ink": colors.ink,
@@ -72,7 +111,6 @@ var cssVars = {
   "--orx-accent": colors.accent,
   "--orx-radius": radius.default
 };
-var ORSTRAX_WORDMARK_URL = "https://raw.githubusercontent.com/orstrax/orstrax-ui/main/src/assets/orstrax-wordmark.png";
 var SIZES = {
   sm: { logo: "h-5", text: "text-sm", gap: "gap-1.5" },
   md: { logo: "h-7", text: "text-base", gap: "gap-2" },
@@ -92,7 +130,7 @@ function OrstraxProductBrand({
     /* @__PURE__ */ jsxRuntime.jsx(
       "img",
       {
-        src: wordmarkSrc || ORSTRAX_WORDMARK_URL,
+        src: wordmarkSrc || orstraxAssetHref("orstrax-wordmark.png"),
         alt: "Orstrax",
         className: `block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`
       }
@@ -271,7 +309,7 @@ function AuthLayout({
   brandHref = "/",
   wordmarkSrc
 }) {
-  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "desk-login relative min-h-screen overflow-hidden", children: [
+  return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "orstrax-auth desk-login relative min-h-screen overflow-hidden", children: [
     /* @__PURE__ */ jsxRuntime.jsx(
       "svg",
       {
@@ -318,7 +356,7 @@ function AuthLayout({
         }
       ),
       /* @__PURE__ */ jsxRuntime.jsx("p", { className: "mt-2 text-sm text-[var(--orx-muted)]", children: tagline }),
-      /* @__PURE__ */ jsxRuntime.jsx("h1", { className: "desk-display mt-10 text-4xl text-[var(--orx-ink)]", children: title }),
+      /* @__PURE__ */ jsxRuntime.jsx("h1", { className: "orstrax-display desk-display orstrax-auth-title mt-10 text-4xl text-[var(--orx-ink)]", children: title }),
       /* @__PURE__ */ jsxRuntime.jsx("div", { className: "mt-8", children })
     ] })
   ] });
@@ -472,6 +510,11 @@ exports.EmptyState = EmptyState;
 exports.FormField = FormField;
 exports.Input = Input;
 exports.Metric = Metric;
+exports.ORSTRAX_MARK_HREF = ORSTRAX_MARK_HREF;
+exports.ORSTRAX_THEME_DEFAULT_VERSION = ORSTRAX_THEME_DEFAULT_VERSION;
+exports.ORSTRAX_UI_DEFAULT_ORIGIN = ORSTRAX_UI_DEFAULT_ORIGIN;
+exports.ORSTRAX_URLS = ORSTRAX_URLS;
+exports.ORSTRAX_WORDMARK_HREF = ORSTRAX_WORDMARK_HREF;
 exports.OrstraxAppShell = OrstraxAppShell;
 exports.OrstraxProductBrand = OrstraxProductBrand;
 exports.PageHeader = PageHeader;
@@ -483,6 +526,10 @@ exports.Textarea = Textarea;
 exports.colors = colors;
 exports.cssVars = cssVars;
 exports.initials = initials;
+exports.orstraxAssetHref = orstraxAssetHref;
+exports.orstraxThemeHref = orstraxThemeHref;
+exports.orstraxThemeVersion = orstraxThemeVersion;
+exports.orstraxUiOrigin = orstraxUiOrigin;
 exports.radius = radius;
 exports.spacing = spacing;
 exports.typography = typography;

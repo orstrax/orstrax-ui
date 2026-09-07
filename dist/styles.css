@@ -1,120 +1,469 @@
 /* src/styles.css */
 :root {
-  --orx-bg: #f4efe6;
-  --orx-surface: #fffcf7;
-  --orx-ink: #1c1915;
-  --orx-muted: #6f675c;
-  --orx-line: #e4dcd0;
-  --orx-navy: #1f2a37;
-  --orx-accent: #2f5da8;
-  --orx-radius: 0.625rem;
-}
-.desk-app {
-  --orx-bg: #f4efe6;
-  --orx-surface: #fffcf7;
-  --orx-ink: #1c1915;
-  --orx-muted: #6f675c;
-  --orx-line: #e4dcd0;
-  --orx-navy: #1f2a37;
-  --orx-accent: #2f5da8;
-  --orx-radius: 0.625rem;
-  background: var(--orx-bg);
-  color: var(--orx-ink);
-  font-family:
+  --orstrax-bg: #f4efe6;
+  --orstrax-surface: #fffcf7;
+  --orstrax-text: #1c1915;
+  --orstrax-text-muted: #6f675c;
+  --orstrax-border: #e4dcd0;
+  --orstrax-nav: #1f2a37;
+  --orstrax-accent: #2f5da8;
+  --orstrax-success: #065f46;
+  --orstrax-warning: #d97706;
+  --orstrax-error: #991b1b;
+  --orstrax-white: #ffffff;
+  --orstrax-radius-sm: 0.5rem;
+  --orstrax-radius-md: 0.625rem;
+  --orstrax-radius-lg: 0.75rem;
+  --orstrax-space-xs: 0.25rem;
+  --orstrax-space-sm: 0.5rem;
+  --orstrax-space-md: 0.75rem;
+  --orstrax-space-lg: 1rem;
+  --orstrax-space-xl: 1.5rem;
+  --orstrax-space-2xl: 2rem;
+  --orstrax-space-3xl: 3rem;
+  --orstrax-space-page: 1.5rem;
+  --orstrax-space-section: 2rem;
+  --orstrax-gutter: 1rem;
+  --orstrax-sidebar-width: 15rem;
+  --orstrax-font-ui:
     var(--font-inter),
+    "Inter",
     ui-sans-serif,
     system-ui,
     sans-serif;
-}
-.desk-display {
-  font-family:
+  --orstrax-font-display:
     var(--font-source-serif),
+    "Source Serif 4",
     ui-serif,
     Georgia,
     serif;
+  --orstrax-shadow: 0 12px 40px rgba(28, 25, 21, 0.06);
+  --orx-bg: var(--orstrax-bg);
+  --orx-surface: var(--orstrax-surface);
+  --orx-ink: var(--orstrax-text);
+  --orx-muted: var(--orstrax-text-muted);
+  --orx-line: var(--orstrax-border);
+  --orx-navy: var(--orstrax-nav);
+  --orx-accent: var(--orstrax-accent);
+  --orx-radius: var(--orstrax-radius-md);
+}
+.orstrax-app,
+.desk-app,
+.orstrax-auth,
+.desk-login,
+.desk-marketing {
+  background: var(--orstrax-bg);
+  color: var(--orstrax-text);
+  font-family: var(--orstrax-font-ui);
+}
+html:has(.orstrax-app),
+html:has(.desk-app),
+html:has(.orstrax-auth),
+html:has(.desk-login),
+html:has(.desk-marketing),
+html[data-orstrax-theme] {
+  background: var(--orstrax-bg);
+}
+body:has(.orstrax-app),
+body:has(.desk-app),
+body:has(.orstrax-auth),
+body:has(.desk-login),
+body:has(.desk-marketing),
+html[data-orstrax-theme] body {
+  background: var(--orstrax-bg);
+  color: var(--orstrax-text);
+  font-family: var(--orstrax-font-ui);
+}
+.orstrax-display,
+.desk-display {
+  font-family: var(--orstrax-font-display);
   font-weight: 600;
   letter-spacing: -0.02em;
 }
-.desk-input {
-  width: 100%;
-  border-radius: 0.5rem;
-  border: 1px solid var(--orx-line);
-  background: white;
-  padding: 0.5rem 0.75rem;
-  color: var(--orx-ink);
+.orstrax-kicker {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orstrax-text-muted);
 }
-.desk-input:focus {
-  outline: 2px solid var(--orx-accent);
-  outline-offset: 2px;
+.orstrax-meta,
+.orstrax-muted {
+  color: var(--orstrax-text-muted);
 }
-.desk-login,
-.desk-marketing {
-  --orx-bg: #f4efe6;
-  --orx-surface: #fffcf7;
-  --orx-ink: #1c1915;
-  --orx-muted: #6f675c;
-  --orx-line: #e4dcd0;
-  --orx-navy: #1f2a37;
-  --orx-accent: #2f5da8;
-  background: var(--orx-bg);
-  color: var(--orx-ink);
-  font-family:
-    var(--font-inter),
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
+.orstrax-page {
+  padding: var(--orstrax-gutter);
+}
+@media (min-width: 768px) {
+  .orstrax-page {
+    padding: var(--orstrax-space-2xl);
+  }
+}
+.orstrax-heading {
+  font-size: 1.875rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--orstrax-text);
+}
+.orstrax-subheading {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--orstrax-text-muted);
 }
 .desk-marketing-header {
-  background: color-mix(in srgb, var(--orx-bg) 88%, white);
-  border-bottom: 1px solid var(--orx-line);
+  background: color-mix(in srgb, var(--orstrax-bg) 88%, white);
+  border-bottom: 1px solid var(--orstrax-border);
 }
-:focus-visible {
-  outline: 2px solid var(--orx-accent);
+.orstrax-app :focus-visible,
+.desk-app :focus-visible,
+.orstrax-auth :focus-visible,
+.desk-login :focus-visible,
+html[data-orstrax-theme] :focus-visible {
+  outline: 2px solid var(--orstrax-accent);
   outline-offset: 2px;
 }
 @media (prefers-reduced-motion: reduce) {
-  * {
+  .orstrax-app *,
+  .desk-app *,
+  .orstrax-auth *,
+  .desk-login * {
     animation: none !important;
     transition: none !important;
   }
 }
 .desk-app .bg-blue-700,
 .desk-app .bg-blue-800 {
-  background-color: var(--orx-navy) !important;
+  background-color: var(--orstrax-nav) !important;
 }
 .desk-app .bg-blue-50,
 .desk-app .bg-blue-100 {
-  background-color: color-mix(in srgb, var(--orx-navy) 8%, var(--orx-surface)) !important;
+  background-color: color-mix(in srgb, var(--orstrax-nav) 8%, var(--orstrax-surface)) !important;
 }
 .desk-app .text-blue-700,
 .desk-app .text-blue-800 {
-  color: var(--orx-accent) !important;
+  color: var(--orstrax-accent) !important;
 }
 .desk-app .border-blue-100,
 .desk-app .border-blue-200 {
-  border-color: var(--orx-line) !important;
+  border-color: var(--orstrax-border) !important;
 }
 .desk-app .text-slate-900,
 .desk-app .text-slate-800 {
-  color: var(--orx-ink) !important;
+  color: var(--orstrax-text) !important;
 }
 .desk-app .text-slate-500,
 .desk-app .text-slate-600,
 .desk-app .text-slate-400 {
-  color: var(--orx-muted) !important;
+  color: var(--orstrax-text-muted) !important;
 }
 .desk-app .border-slate-200,
 .desk-app .border-slate-300 {
-  border-color: var(--orx-line) !important;
+  border-color: var(--orstrax-border) !important;
 }
 .desk-app .bg-slate-50,
 .desk-app .bg-slate-100 {
-  background-color: var(--orx-bg) !important;
+  background-color: var(--orstrax-bg) !important;
 }
 .desk-app .divide-slate-200 > :not(:last-child) {
-  border-color: var(--orx-line);
+  border-color: var(--orstrax-border);
 }
-.desk-app :focus-visible {
-  outline-color: var(--orx-accent);
+.orstrax-input,
+.desk-input,
+.orstrax-auth input:not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=file]),
+.orstrax-auth textarea,
+.orstrax-auth select,
+.desk-login input:not([type=checkbox]):not([type=radio]):not([type=hidden]):not([type=file]),
+.desk-login textarea,
+.desk-login select {
+  display: block;
+  width: 100%;
+  margin-top: 0.25rem;
+  border-radius: var(--orstrax-radius-sm);
+  border: 1px solid var(--orstrax-border);
+  background: var(--orstrax-white);
+  padding: 0.5rem 0.75rem;
+  color: var(--orstrax-text);
+  font: inherit;
+}
+.orstrax-input:focus,
+.desk-input:focus,
+.orstrax-auth input:focus,
+.orstrax-auth textarea:focus,
+.orstrax-auth select:focus,
+.desk-login input:focus,
+.desk-login textarea:focus,
+.desk-login select:focus {
+  outline: 2px solid var(--orstrax-accent);
+  outline-offset: 2px;
+}
+.orstrax-label,
+.orstrax-auth label,
+.desk-login label {
+  display: block;
+  font-size: 0.875rem;
+}
+.orstrax-hint {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--orstrax-text-muted);
+}
+.orstrax-error,
+.orstrax-alert-error {
+  font-size: 0.875rem;
+  color: var(--orstrax-error);
+}
+.orstrax-success {
+  font-size: 0.875rem;
+  color: var(--orstrax-success);
+}
+.orstrax-check,
+.orstrax-auth input[type=checkbox],
+.desk-login input[type=checkbox] {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--orstrax-nav);
+}
+.orstrax-btn,
+.orstrax-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: var(--orstrax-radius-sm);
+  background: var(--orstrax-nav);
+  color: var(--orstrax-white);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+.orstrax-btn:disabled,
+.orstrax-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.orstrax-btn-block {
+  width: 100%;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+.orstrax-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--orstrax-border);
+  border-radius: var(--orstrax-radius-sm);
+  background: var(--orstrax-white);
+  color: var(--orstrax-text);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.orstrax-link {
+  color: var(--orstrax-accent);
+  text-decoration: none;
+}
+.orstrax-link:hover {
+  text-decoration: underline;
+}
+.orstrax-card,
+.orstrax-panel {
+  border: 1px solid var(--orstrax-border);
+  border-radius: var(--orstrax-radius-md);
+  background: var(--orstrax-surface);
+}
+.orstrax-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background: color-mix(in srgb, var(--orstrax-nav) 8%, var(--orstrax-surface));
+  color: var(--orstrax-text);
+}
+.orstrax-badge-success {
+  background: color-mix(in srgb, var(--orstrax-success) 12%, var(--orstrax-surface));
+  color: var(--orstrax-success);
+}
+.orstrax-badge-warning {
+  background: color-mix(in srgb, var(--orstrax-warning) 14%, var(--orstrax-surface));
+  color: var(--orstrax-warning);
+}
+.orstrax-badge-error {
+  background: color-mix(in srgb, var(--orstrax-error) 10%, var(--orstrax-surface));
+  color: var(--orstrax-error);
+}
+.orstrax-alert {
+  border: 1px solid var(--orstrax-border);
+  border-radius: var(--orstrax-radius-sm);
+  background: var(--orstrax-surface);
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+}
+.orstrax-alert-error {
+  border-color: color-mix(in srgb, var(--orstrax-error) 35%, var(--orstrax-border));
+  background: color-mix(in srgb, var(--orstrax-error) 6%, var(--orstrax-surface));
+  color: var(--orstrax-error);
+}
+.orstrax-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem;
+  border: 1px solid var(--orstrax-border);
+  border-radius: var(--orstrax-radius-sm);
+  background: var(--orstrax-surface);
+}
+.orstrax-tab {
+  border: 0;
+  border-radius: calc(var(--orstrax-radius-sm) - 2px);
+  background: transparent;
+  color: var(--orstrax-text-muted);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.orstrax-tab[aria-selected=true],
+.orstrax-tab.is-active {
+  background: var(--orstrax-nav);
+  color: var(--orstrax-white);
+}
+.orstrax-empty {
+  border: 1px dashed var(--orstrax-border);
+  border-radius: var(--orstrax-radius-md);
+  background: var(--orstrax-surface);
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+.orstrax-empty h2,
+.orstrax-empty h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+.orstrax-empty p {
+  margin: 0.5rem 0 0;
+  color: var(--orstrax-text-muted);
+}
+.orstrax-sidebar {
+  background: var(--orstrax-bg);
+  color: var(--orstrax-text);
+  border-right: 1px solid var(--orstrax-border);
+}
+.orstrax-nav-label {
+  padding: 0 0.75rem;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--orstrax-text-muted);
+}
+.orstrax-nav-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: var(--orstrax-radius-sm);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--orstrax-text);
+  text-decoration: none;
+}
+.orstrax-nav-item:hover {
+  background: var(--orstrax-surface);
+}
+.orstrax-nav-item.is-active,
+.orstrax-nav-item[aria-current=page] {
+  background: var(--orstrax-nav);
+  color: var(--orstrax-white);
+}
+.orstrax-topbar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--orstrax-border);
+  background: var(--orstrax-surface);
+  padding: 0.75rem 1rem;
+}
+.orstrax-auth,
+.desk-login {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.orstrax-auth-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100vh;
+  max-width: 32rem;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+}
+.orstrax-auth-tagline {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--orstrax-text-muted);
+}
+.orstrax-auth-title {
+  margin-top: 2.5rem;
+  font-size: 2.25rem;
+  color: var(--orstrax-text);
+}
+.orstrax-auth-form {
+  margin-top: 2rem;
+}
+.orstrax-auth-form > * + * {
+  margin-top: 1rem;
+}
+.orstrax-auth-footer {
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: var(--orstrax-text-muted);
+}
+.orstrax-auth-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+.orstrax-auth-footer a:hover {
+  text-decoration: underline;
+}
+html[data-orstrax-theme] {
+  --background: var(--orstrax-bg);
+  --foreground: var(--orstrax-text);
+  --card: var(--orstrax-surface);
+  --card-foreground: var(--orstrax-text);
+  --popover: var(--orstrax-surface);
+  --popover-foreground: var(--orstrax-text);
+  --primary: var(--orstrax-nav);
+  --primary-foreground: var(--orstrax-white);
+  --secondary: var(--orstrax-surface);
+  --secondary-foreground: var(--orstrax-text);
+  --muted: color-mix(in srgb, var(--orstrax-bg) 72%, white);
+  --muted-foreground: var(--orstrax-text-muted);
+  --accent: color-mix(in srgb, var(--orstrax-nav) 8%, var(--orstrax-surface));
+  --accent-foreground: var(--orstrax-text);
+  --destructive: var(--orstrax-error);
+  --border: var(--orstrax-border);
+  --input: var(--orstrax-border);
+  --ring: var(--orstrax-accent);
+  --radius: var(--orstrax-radius-md);
+  --sidebar: var(--orstrax-bg);
+  --sidebar-foreground: var(--orstrax-text);
+  --sidebar-primary: var(--orstrax-nav);
+  --sidebar-primary-foreground: var(--orstrax-white);
+  --sidebar-accent: var(--orstrax-surface);
+  --sidebar-accent-foreground: var(--orstrax-text);
+  --sidebar-border: var(--orstrax-border);
+  --sidebar-ring: var(--orstrax-accent);
 }
 /*# sourceMappingURL=styles.css.map */
