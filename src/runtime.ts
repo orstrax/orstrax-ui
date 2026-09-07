@@ -13,7 +13,7 @@ export const ORSTRAX_URLS = {
   hub: "https://www.orstrax.io",
   desk: "https://desk.orstrax.io",
   admin: "https://admin.orstrax.io",
-  orders: "https://orders.orstrax.io",
+  orders: "https://orderflow.orstrax.io",
   ordersHelp: "https://desk.orstrax.io/orders",
   ui: ORSTRAX_UI_DEFAULT_ORIGIN,
 } as const;

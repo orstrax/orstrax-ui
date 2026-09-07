@@ -11,7 +11,7 @@ declare const ORSTRAX_URLS: {
     readonly hub: "https://www.orstrax.io";
     readonly desk: "https://desk.orstrax.io";
     readonly admin: "https://admin.orstrax.io";
-    readonly orders: "https://orders.orstrax.io";
+    readonly orders: "https://orderflow.orstrax.io";
     readonly ordersHelp: "https://desk.orstrax.io/orders";
     readonly ui: "https://ui.orstrax.io";
 };
