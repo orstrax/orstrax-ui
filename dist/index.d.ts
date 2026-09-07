@@ -106,36 +106,15 @@ declare const cssVars: {
     readonly "--orx-radius": "0.625rem";
 };
 
-/**
- * Size configurations for the product brand component.
- * Matches the exact sizing used in Desk.
- */
-declare const SIZES: {
-    readonly sm: {
-        readonly logo: "h-5";
-        readonly text: "text-sm";
-        readonly gap: "gap-1.5";
-    };
-    readonly md: {
-        readonly logo: "h-7";
-        readonly text: "text-base";
-        readonly gap: "gap-2";
-    };
-    readonly lg: {
-        readonly logo: "h-8 sm:h-9";
-        readonly text: "text-xl sm:text-2xl";
-        readonly gap: "gap-2.5";
-    };
-};
 interface OrstraxProductBrandProps {
-    /** Product name to display next to the wordmark (e.g., "Desk", "Orders", "Admin") */
+    /** Product name to display next to the wordmark (e.g., "Desk", "Orderflow", "Admin") */
     productName: string;
     /** Optional href for link wrapper */
     href?: string;
     /** Size variant */
-    size?: keyof typeof SIZES;
-    /** Color tone */
-    tone?: "ink" | "muted";
+    size?: "sm" | "md" | "lg";
+    /** Color tone. Default accent matches Orderflow’s product name. */
+    tone?: "accent" | "ink" | "muted";
     /** Additional CSS classes */
     className?: string;
     /** Optional link component (e.g., Next.js Link) */
@@ -144,24 +123,8 @@ interface OrstraxProductBrandProps {
     wordmarkSrc?: string;
 }
 /**
- * OrstraxProductBrand
- *
- * Displays the canonical Orstrax wordmark + product name treatment.
- * This component reproduces the exact branding approach used in Desk:
- *
- * - Same proportions and spacing
- * - Same baseline alignment
- * - Same responsive behavior
- * - Same mobile treatment
- *
- * The wordmark itself is the exact shared canonical asset from Desk.
- *
- * @example
- * ```tsx
- * <OrstraxProductBrand productName="Desk" />
- * <OrstraxProductBrand productName="Orders" size="lg" href="/" />
- * <OrstraxProductBrand productName="Admin" tone="muted" />
- * ```
+ * Canonical Orstrax wordmark + product name.
+ * Visuals (blue product name, baseline alignment, sizes) come from the hosted theme.
  */
 declare function OrstraxProductBrand({ productName, href, size, tone, className, LinkComponent, wordmarkSrc, }: OrstraxProductBrandProps): React.JSX.Element;
 

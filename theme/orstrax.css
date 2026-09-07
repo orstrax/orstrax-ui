@@ -42,6 +42,7 @@
   --orstrax-space-section: 2rem;
   --orstrax-gutter: 1rem;
   --orstrax-sidebar-width: 15rem;
+  --orstrax-topbar-height: 2.75rem;
 
   --orstrax-font-ui: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
   --orstrax-font-display: var(--font-source-serif), "Source Serif 4", ui-serif, Georgia, serif;
@@ -138,6 +139,109 @@ html[data-orstrax-theme] body {
 .desk-marketing-header {
   background: color-mix(in srgb, var(--orstrax-bg) 88%, white);
   border-bottom: 1px solid var(--orstrax-border);
+}
+
+/* Wordmark + product name lockup. Product name uses accent blue and sits
+   on the visual baseline of the raster wordmark (PNG has extra padding). */
+.orstrax-lockup {
+  display: inline-flex;
+  max-width: 100%;
+  align-items: flex-end;
+  gap: 0.4em;
+  color: inherit;
+  text-decoration: none;
+}
+
+.orstrax-lockup img,
+.orstrax-lockup-mark {
+  display: block;
+  height: 1.25rem;
+  width: auto;
+  max-width: min(100%, 11rem);
+  flex-shrink: 0;
+  object-fit: contain;
+  object-position: left;
+}
+
+.orstrax-lockup-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--orstrax-accent);
+  margin-bottom: 0.12em;
+}
+
+.orstrax-app .orstrax-lockup-name,
+.desk-app .orstrax-lockup-name,
+.hub .orstrax-lockup-name,
+.orstrax-auth .orstrax-lockup-name,
+.desk-login .orstrax-lockup-name {
+  color: var(--orstrax-accent);
+}
+
+.orstrax-lockup-name--muted,
+.orstrax-app .orstrax-lockup-name--muted,
+.desk-app .orstrax-lockup-name--muted {
+  color: var(--orstrax-text-muted);
+}
+
+.orstrax-lockup-name--ink,
+.orstrax-app .orstrax-lockup-name--ink,
+.desk-app .orstrax-lockup-name--ink {
+  color: var(--orstrax-text);
+}
+
+a.orstrax-lockup-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.orstrax-lockup--md {
+  gap: 0.5rem;
+}
+
+.orstrax-lockup--md img,
+.orstrax-lockup--md .orstrax-lockup-mark {
+  height: 1.75rem;
+}
+
+.orstrax-lockup--md .orstrax-lockup-name {
+  font-size: 1rem;
+  margin-bottom: 0.16em;
+}
+
+.orstrax-lockup--lg {
+  gap: 0.55rem;
+}
+
+.orstrax-lockup--lg img,
+.orstrax-lockup--lg .orstrax-lockup-mark {
+  height: 2rem;
+}
+
+.orstrax-lockup--lg .orstrax-lockup-name {
+  font-size: 1.25rem;
+  margin-bottom: 0.2em;
+}
+
+@media (min-width: 640px) {
+  .orstrax-lockup--lg img,
+  .orstrax-lockup--lg .orstrax-lockup-mark {
+    height: 2.25rem;
+  }
+
+  .orstrax-lockup--lg .orstrax-lockup-name {
+    font-size: 1.5rem;
+    margin-bottom: 0.22em;
+  }
+}
+
+/* Auth lockups from older package builds still inherit the link color. */
+.orstrax-auth-panel a[aria-label^="Orstrax"] .orstrax-lockup-name,
+.orstrax-auth-panel a[aria-label^="Orstrax"] span.font-semibold,
+.desk-login a[aria-label^="Orstrax"] span.font-semibold {
+  color: var(--orstrax-accent);
 }
 
 .orstrax-app :focus-visible,
@@ -455,11 +559,14 @@ html[data-orstrax-theme] :focus-visible {
 }
 
 .orstrax-topbar {
+  display: flex;
   align-items: center;
   gap: 0.75rem;
+  min-height: var(--orstrax-topbar-height);
+  box-sizing: border-box;
   border-bottom: 1px solid var(--orstrax-border);
   background: var(--orstrax-surface);
-  padding: 0.75rem 1rem;
+  padding: 0.25rem 1rem;
 }
 
 /* -------------------------------------------------------------------------- */

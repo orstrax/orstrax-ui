@@ -217,11 +217,11 @@ export function OrstraxAppShell({
         {/* Main content area */}
         <div className="flex min-w-0 flex-1 flex-col">
           {/* Header */}
-          <header className="flex items-center gap-3 border-b border-[var(--orx-line)] bg-[var(--orx-surface)] px-4 py-3">
+          <header className="orstrax-topbar">
             {/* Mobile menu button */}
             <button
               type="button"
-              className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--orx-line)] text-[var(--orx-ink)] md:hidden"
+              className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--orx-line)] text-[var(--orx-ink)] md:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-expanded={mobileOpen}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -234,10 +234,8 @@ export function OrstraxAppShell({
               <OrstraxProductBrand productName={productName} size="sm" LinkComponent={LinkComponent} />
             </Link>
 
-            {/* Desktop brand + tagline */}
             <div className="hidden min-w-0 md:block">
               <OrstraxProductBrand productName={productName} size="sm" LinkComponent={LinkComponent} />
-              <p className="hidden text-[11px] text-[var(--orx-muted)] lg:block">{tagline}</p>
             </div>
 
             {/* Header content (search, etc.) */}

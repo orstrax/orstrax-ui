@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 // src/runtime.ts
 var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.4";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.5";
 var ORSTRAX_URLS = {
   company: "https://orstrax.com",
   hub: "https://www.orstrax.io",
@@ -149,41 +149,30 @@ var cssVars = {
   "--orx-accent": colors.accent,
   "--orx-radius": radius.default
 };
-var SIZES = {
-  sm: { logo: "h-5", text: "text-sm", gap: "gap-1.5" },
-  md: { logo: "h-7", text: "text-base", gap: "gap-2" },
-  lg: { logo: "h-8 sm:h-9", text: "text-xl sm:text-2xl", gap: "gap-2.5" }
-};
 function OrstraxProductBrand({
   productName,
   href,
   size = "sm",
-  tone = "ink",
+  tone = "accent",
   className = "",
   LinkComponent,
   wordmarkSrc
 }) {
-  const scale = SIZES[size];
-  const content = /* @__PURE__ */ jsxs("span", { className: `inline-flex items-end ${scale.gap} ${className}`, children: [
+  const toneClass = tone === "muted" ? "orstrax-lockup-name--muted" : tone === "ink" ? "orstrax-lockup-name--ink" : "";
+  const content = /* @__PURE__ */ jsxs("span", { className: `orstrax-lockup orstrax-lockup--${size} ${className}`.trim(), children: [
     /* @__PURE__ */ jsx(
       "img",
       {
         src: wordmarkSrc || orstraxAssetHref("orstrax-wordmark.png"),
         alt: "Orstrax",
-        className: `block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`
+        className: "orstrax-lockup-mark"
       }
     ),
-    /* @__PURE__ */ jsx(
-      "span",
-      {
-        className: `${scale.text} font-semibold leading-none tracking-tight ${tone === "muted" ? "text-[var(--orx-muted)]" : "text-[var(--orx-ink)]"}`,
-        children: productName
-      }
-    )
+    /* @__PURE__ */ jsx("span", { className: `orstrax-lockup-name ${toneClass}`.trim(), children: productName })
   ] });
   if (href) {
     const Link = LinkComponent || "a";
-    return /* @__PURE__ */ jsx(Link, { href, className: "inline-flex max-w-full items-end", "aria-label": `Orstrax ${productName}`, children: content });
+    return /* @__PURE__ */ jsx(Link, { href, className: "orstrax-lockup-link inline-flex max-w-full items-end", "aria-label": `Orstrax ${productName}`, children: content });
   }
   return /* @__PURE__ */ jsx("span", { className: "inline-flex max-w-full items-end", role: "img", "aria-label": `Orstrax ${productName}`, children: content });
 }
@@ -472,12 +461,12 @@ function OrstraxAppShell({
       ] }) : null
     ] }),
     /* @__PURE__ */ jsxs("div", { className: "flex min-w-0 flex-1 flex-col", children: [
-      /* @__PURE__ */ jsxs("header", { className: "flex items-center gap-3 border-b border-[var(--orx-line)] bg-[var(--orx-surface)] px-4 py-3", children: [
+      /* @__PURE__ */ jsxs("header", { className: "orstrax-topbar", children: [
         /* @__PURE__ */ jsx(
           "button",
           {
             type: "button",
-            className: "inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[var(--orx-line)] text-[var(--orx-ink)] md:hidden",
+            className: "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[var(--orx-line)] text-[var(--orx-ink)] md:hidden",
             onClick: () => setMobileOpen(!mobileOpen),
             "aria-expanded": mobileOpen,
             "aria-label": mobileOpen ? "Close menu" : "Open menu",
@@ -485,10 +474,7 @@ function OrstraxAppShell({
           }
         ),
         /* @__PURE__ */ jsx(Link, { href: "/", className: "min-w-0 md:hidden", onClick: () => setMobileOpen(false), children: /* @__PURE__ */ jsx(OrstraxProductBrand, { productName, size: "sm", LinkComponent }) }),
-        /* @__PURE__ */ jsxs("div", { className: "hidden min-w-0 md:block", children: [
-          /* @__PURE__ */ jsx(OrstraxProductBrand, { productName, size: "sm", LinkComponent }),
-          /* @__PURE__ */ jsx("p", { className: "hidden text-[11px] text-[var(--orx-muted)] lg:block", children: tagline })
-        ] }),
+        /* @__PURE__ */ jsx("div", { className: "hidden min-w-0 md:block", children: /* @__PURE__ */ jsx(OrstraxProductBrand, { productName, size: "sm", LinkComponent }) }),
         /* @__PURE__ */ jsx("div", { className: "flex min-w-0 flex-1 justify-end md:justify-center", children: headerContent }),
         renderAccountMenu ? renderAccountMenu(user) : accountMenu ? accountMenu : /* @__PURE__ */ jsx(DefaultAccountMenu, { user })
       ] }),
