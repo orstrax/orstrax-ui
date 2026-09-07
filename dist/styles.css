@@ -398,34 +398,42 @@ html[data-orstrax-theme] :focus-visible {
   color: var(--orstrax-text);
   font-family: var(--orstrax-font-ui);
 }
-.orstrax-auth > svg:first-of-type,
-.orstrax-auth-motif-mobile {
+.orstrax-auth > svg,
+.orstrax-auth-motif {
   pointer-events: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 10rem;
-  width: 100%;
-  opacity: 0.04;
+  position: absolute !important;
+  z-index: 0;
+  margin: 0;
+  overflow: visible;
 }
+.orstrax-auth-motif-mobile {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+.orstrax-auth-motif-desktop,
 .orstrax-auth > svg:nth-of-type(2),
-.orstrax-auth-motif-desktop {
-  pointer-events: none;
-  position: absolute;
-  inset: 0 auto 0 0;
-  display: none;
-  height: 100%;
-  width: 42%;
-  opacity: 0.18;
+.orstrax-auth > svg:only-of-type {
+  display: block !important;
+  left: -18%;
+  right: auto;
+  top: auto;
+  bottom: -12%;
+  width: 18rem;
+  height: 22rem;
+  max-width: none;
+  opacity: 0.08;
 }
 @media (min-width: 1024px) {
-  .orstrax-auth > svg:first-of-type,
-  .orstrax-auth-motif-mobile {
-    display: none;
-  }
+  .orstrax-auth-motif-desktop,
   .orstrax-auth > svg:nth-of-type(2),
-  .orstrax-auth-motif-desktop {
-    display: block;
+  .orstrax-auth > svg:only-of-type {
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 42%;
+    height: 100%;
+    opacity: 0.18;
   }
 }
 .orstrax-auth-panel,

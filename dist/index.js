@@ -6,7 +6,7 @@ var react = require('react');
 
 // src/runtime.ts
 var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.1";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.2";
 var ORSTRAX_URLS = {
   company: "https://orstrax.com",
   hub: "https://www.orstrax.io",
@@ -355,34 +355,15 @@ function AuthLayout({
     /* @__PURE__ */ jsxRuntime.jsx(
       "svg",
       {
-        className: "orstrax-auth-motif orstrax-auth-motif-mobile",
-        viewBox: "0 0 400 150",
-        preserveAspectRatio: "xMinYMin slice",
-        "aria-hidden": true,
-        children: /* @__PURE__ */ jsxRuntime.jsxs("g", { fill: "none", stroke: "#1f2a37", strokeWidth: "0.8", children: [
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 20 C 80 40, 160 25, 240 45 C 320 30, 400 50, 480 35" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 45 C 100 70, 200 50, 300 70 C 350 75, 420 68, 480 75" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 75 C 60 88, 140 80, 200 92 C 280 85, 360 95, 480 90" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M20 105 C 100 110, 200 108, 300 112 C 360 110, 440 115, 480 112" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M40 128 C 120 130, 240 129, 340 131 C 400 130, 460 132, 480 131" })
-        ] })
-      }
-    ),
-    /* @__PURE__ */ jsxRuntime.jsx(
-      "svg",
-      {
         className: "orstrax-auth-motif orstrax-auth-motif-desktop",
         viewBox: "0 0 400 800",
+        preserveAspectRatio: "xMinYMin slice",
         "aria-hidden": true,
         children: /* @__PURE__ */ jsxRuntime.jsxs("g", { fill: "none", stroke: "#1f2a37", strokeWidth: "1.2", children: [
           /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M20 80 C 80 140, 40 220, 120 280" }),
           /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M40 90 C 20 180, 160 210, 90 300" }),
           /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M10 200 C 140 240, 20 320, 110 390" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M80 40 C 10 120, 180 160, 60 250" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M200 420 L 360 420" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M200 455 L 360 455" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M200 490 L 360 490" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M200 525 L 360 525" })
+          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M80 40 C 10 120, 180 160, 60 250" })
         ] })
       }
     ),
