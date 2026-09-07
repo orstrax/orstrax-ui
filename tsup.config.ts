@@ -10,7 +10,5 @@ export default defineConfig({
   external: ["react", "react-dom"],
   minify: false,
   treeshake: true,
-  loader: {
-    ".png": "dataurl",
-  },
+  // No loader needed - using external URL
 });

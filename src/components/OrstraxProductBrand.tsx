@@ -1,7 +1,7 @@
 import React from "react";
 
 // Orstrax wordmark embedded as data URL to avoid asset path resolution issues when consumed as a package
-const orstraxWordmark = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABZEAAAE7CAYAAACsf89dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAgAElEQVR4nOzd7XUbydGG4ad9/J96IxA2AtERCBuB6AgERSAqAkERLBWBwAiWjGCHEZiMwGAEFiLoFxgQoQz0o3ZvVVXfF3ISW+LM7J4fAw13dXV1cXFxdXHx8fZ9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC41j3TLyDK21/ffm8+u7i2/u97r5/fb7f5JQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8r1un1f5x8+/v0fru5v/35vXtdB8eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwH+dc6fV12g==/";
+const ORSTRAX_WORDMARK_URL = "https://raw.githubusercontent.com/orstrax/orstrax-ui/main/src/assets/orstrax-wordmark.png";
 
 /**
  * Size configurations for the product brand component.
@@ -70,7 +70,7 @@ export function OrstraxProductBrand({
   const content = (
     <span className={`inline-flex items-end ${scale.gap} ${className}`}>
       <img
-        src={wordmarkSrc || orstraxWordmark}
+        src={wordmarkSrc || ORSTRAX_WORDMARK_URL}
         alt="Orstrax"
         className={`block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`}
       />

@@ -70,7 +70,7 @@ var cssVars = {
   "--orx-accent": colors.accent,
   "--orx-radius": radius.default
 };
-var orstraxWordmark = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABZEAAAE7CAYAAACsf89dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAgAElEQVR4nOzd7XUbydGG4ad9/J96IxA2AtERCBuB6AgERSAqAkERLBWBwAiWjGCHEZiMwGAEFiLoFxgQoQz0o3ZvVVXfF3ISW+LM7J4fAw13dXV1cXFxdXHx8fZ9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC41j3TLyDK21/ffm8+u7i2/u97r5/fb7f5JQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8r1un1f5x8+/v0fru5v/35vXtdB8eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwH+dc6fV12g==/";
+var ORSTRAX_WORDMARK_URL = "https://raw.githubusercontent.com/orstrax/orstrax-ui/main/src/assets/orstrax-wordmark.png";
 var SIZES = {
   sm: { logo: "h-5", text: "text-sm", gap: "gap-1.5" },
   md: { logo: "h-7", text: "text-base", gap: "gap-2" },
@@ -90,7 +90,7 @@ function OrstraxProductBrand({
     /* @__PURE__ */ jsx(
       "img",
       {
-        src: wordmarkSrc || orstraxWordmark,
+        src: wordmarkSrc || ORSTRAX_WORDMARK_URL,
         alt: "Orstrax",
         className: `block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`
       }
