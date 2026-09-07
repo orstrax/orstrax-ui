@@ -1,5 +1,7 @@
 import React from "react";
-import orstraxWordmark from "../assets/orstrax-wordmark.png";
+
+// Orstrax wordmark embedded as data URL to avoid asset path resolution issues when consumed as a package
+const orstraxWordmark = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABZEAAAE7CAYAAACsf89dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAgAElEQVR4nOzd7XUbydGG4ad9/J96IxA2AtERCBuB6AgERSAqAkERLBWBwAiWjGCHEZiMwGAEFiLoFxgQoQz0o3ZvVVXfF3ISW+LM7J4fAw13dXV1cXFxdXHx8fZ9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC41j3TLyDK21/ffm8+u7i2/u97r5/fb7f5JQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8r1un1f5x8+/v0fru5v/35vXtdB8eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwH+dc6fV12g==/";
 
 /**
  * Size configurations for the product brand component.

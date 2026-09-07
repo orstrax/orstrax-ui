@@ -127,6 +127,8 @@ interface OrstraxProductBrandProps {
     className?: string;
     /** Optional link component (e.g., Next.js Link) */
     LinkComponent?: React.ElementType;
+    /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
+    wordmarkSrc?: string;
 }
 /**
  * OrstraxProductBrand
@@ -148,7 +150,7 @@ interface OrstraxProductBrandProps {
  * <OrstraxProductBrand productName="Admin" tone="muted" />
  * ```
  */
-declare function OrstraxProductBrand({ productName, href, size, tone, className, LinkComponent, }: OrstraxProductBrandProps): React.JSX.Element;
+declare function OrstraxProductBrand({ productName, href, size, tone, className, LinkComponent, wordmarkSrc, }: OrstraxProductBrandProps): React.JSX.Element;
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "primary" | "secondary";
@@ -280,6 +282,8 @@ interface AuthLayoutProps {
     LinkComponent?: React.ElementType;
     /** Optional href for the product brand link */
     brandHref?: string;
+    /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
+    wordmarkSrc?: string;
 }
 /**
  * AuthLayout
@@ -320,7 +324,7 @@ interface AuthLayoutProps {
  * </AuthLayout>
  * ```
  */
-declare function AuthLayout({ productName, tagline, title, children, LinkComponent, brandHref, }: AuthLayoutProps): React.JSX.Element;
+declare function AuthLayout({ productName, tagline, title, children, LinkComponent, brandHref, wordmarkSrc, }: AuthLayoutProps): React.JSX.Element;
 interface AuthFooterProps {
     children: React.ReactNode;
 }

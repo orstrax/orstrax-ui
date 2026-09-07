@@ -75,7 +75,7 @@ export function AuthLayout({
   return (
     <div className="desk-login relative min-h-screen overflow-hidden">
       {/* Decorative line motif - chaos/clarity visual element */}
-      {/* Mobile: simplified version at top */}
+      {/* Mobile: simplified version at top - organic curves transitioning to calm */}
       <svg
         className="pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.04] lg:hidden"
         viewBox="0 0 400 150"
@@ -83,11 +83,11 @@ export function AuthLayout({
         aria-hidden
       >
         <g fill="none" stroke="#1f2a37" strokeWidth="0.8">
-          <path d="M0 30 C 100 50, 200 30, 300 50 C 350 55, 400 50, 450 55" />
-          <path d="M0 50 C 120 75, 220 50, 320 75 C 370 80, 420 75, 470 80" />
-          <path d="M50 100 L 400 100" />
-          <path d="M50 120 L 400 120" />
-          <path d="M50 135 L 350 135" />
+          <path d="M0 20 C 80 40, 160 25, 240 45 C 320 30, 400 50, 480 35" />
+          <path d="M0 45 C 100 70, 200 50, 300 70 C 350 75, 420 68, 480 75" />
+          <path d="M0 75 C 60 88, 140 80, 200 92 C 280 85, 360 95, 480 90" />
+          <path d="M20 105 C 100 110, 200 108, 300 112 C 360 110, 440 115, 480 112" />
+          <path d="M40 128 C 120 130, 240 129, 340 131 C 400 130, 460 132, 480 131" />
         </g>
       </svg>
       

@@ -72,9 +72,7 @@ var cssVars = {
   "--orx-accent": colors.accent,
   "--orx-radius": radius.default
 };
-
-// src/assets/orstrax-wordmark.png
-var orstrax_wordmark_default = "./orstrax-wordmark-7264HBQ5.png";
+var orstraxWordmark = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABZEAAAE7CAYAAACsf89dAAAACXBIWXMAABYlAAAWJQFJUiTwAAAgAElEQVR4nOzd7XUbydGG4ad9/J96IxA2AtERCBuB6AgERSAqAkERLBWBwAiWjGCHEZiMwGAEFiLoFxgQoQz0o3ZvVVXfF3ISW+LM7J4fAw13dXV1cXFxdXHx8fZ9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC41j3TLyDK21/ffm8+u7i2/u97r5/fb7f5JQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8r1un1f5x8+/v0fru5v/35vXtdB8eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwH+dc6fV12g==/";
 var SIZES = {
   sm: { logo: "h-5", text: "text-sm", gap: "gap-1.5" },
   md: { logo: "h-7", text: "text-base", gap: "gap-2" },
@@ -86,14 +84,15 @@ function OrstraxProductBrand({
   size = "sm",
   tone = "ink",
   className = "",
-  LinkComponent
+  LinkComponent,
+  wordmarkSrc
 }) {
   const scale = SIZES[size];
   const content = /* @__PURE__ */ jsxRuntime.jsxs("span", { className: `inline-flex items-end ${scale.gap} ${className}`, children: [
     /* @__PURE__ */ jsxRuntime.jsx(
       "img",
       {
-        src: orstrax_wordmark_default,
+        src: wordmarkSrc || orstraxWordmark,
         alt: "Orstrax",
         className: `block ${scale.logo} w-auto max-w-[min(100%,11rem)] shrink-0 object-contain object-left`
       }
@@ -269,22 +268,23 @@ function AuthLayout({
   title,
   children,
   LinkComponent,
-  brandHref = "/"
+  brandHref = "/",
+  wordmarkSrc
 }) {
   return /* @__PURE__ */ jsxRuntime.jsxs("div", { className: "desk-login relative min-h-screen overflow-hidden", children: [
     /* @__PURE__ */ jsxRuntime.jsx(
       "svg",
       {
-        className: "pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.15] lg:hidden",
+        className: "pointer-events-none absolute left-0 top-0 h-40 w-full opacity-[0.04] lg:hidden",
         viewBox: "0 0 400 150",
         preserveAspectRatio: "xMinYMin slice",
         "aria-hidden": true,
-        children: /* @__PURE__ */ jsxRuntime.jsxs("g", { fill: "none", stroke: "#1f2a37", strokeWidth: "1.4", children: [
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 30 C 100 50, 200 30, 300 50 C 350 55, 400 50, 450 55" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 50 C 120 75, 220 50, 320 75 C 370 80, 420 75, 470 80" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M50 100 L 400 100" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M50 120 L 400 120" }),
-          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M50 135 L 350 135" })
+        children: /* @__PURE__ */ jsxRuntime.jsxs("g", { fill: "none", stroke: "#1f2a37", strokeWidth: "0.8", children: [
+          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 20 C 80 40, 160 25, 240 45 C 320 30, 400 50, 480 35" }),
+          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 45 C 100 70, 200 50, 300 70 C 350 75, 420 68, 480 75" }),
+          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M0 75 C 60 88, 140 80, 200 92 C 280 85, 360 95, 480 90" }),
+          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M20 105 C 100 110, 200 108, 300 112 C 360 110, 440 115, 480 112" }),
+          /* @__PURE__ */ jsxRuntime.jsx("path", { d: "M40 128 C 120 130, 240 129, 340 131 C 400 130, 460 132, 480 131" })
         ] })
       }
     ),
@@ -313,7 +313,8 @@ function AuthLayout({
           productName,
           size: "lg",
           href: brandHref,
-          LinkComponent
+          LinkComponent,
+          wordmarkSrc
         }
       ),
       /* @__PURE__ */ jsxRuntime.jsx("p", { className: "mt-2 text-sm text-[var(--orx-muted)]", children: tagline }),
