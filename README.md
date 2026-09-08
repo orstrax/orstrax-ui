@@ -29,7 +29,7 @@ In the root layout:
 <link rel="stylesheet" href="https://ui.orstrax.io/theme/v1.0.0/orstrax.css" />
 ```
 
-Set Inter (`--font-inter`) and Source Serif 4 (`--font-source-serif`) on `<html>`. Put `data-orstrax-theme` on `<html>` so shadcn/Tailwind tokens map onto Desk values.
+Set Inter (`--font-inter`), Nunito (`--font-nunito`), and Source Serif 4 (`--font-source-serif`) on `<html>`. Product names in lockups use Nunito. Put `data-orstrax-theme` on `<html>` so shadcn/Tailwind tokens map onto Desk values.
 
 Lockup pattern: canonical wordmark image + product name as text.
 
