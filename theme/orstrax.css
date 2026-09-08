@@ -46,7 +46,9 @@
 
   --orstrax-font-ui: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
   --orstrax-font-display: var(--font-source-serif), "Source Serif 4", ui-serif, Georgia, serif;
-  --orstrax-font-product: var(--font-nunito), "Nunito", ui-sans-serif, system-ui, sans-serif;
+  /* Prefer next/font --font-nunito; keep a named fallback so the stack stays valid
+     even before the variable is defined on <html>. */
+  --orstrax-font-product: var(--font-nunito, "Nunito"), "Nunito", ui-sans-serif, system-ui, sans-serif;
   --orstrax-shadow: 0 12px 40px rgba(28, 25, 21, 0.06);
 
   /* Desk aliases — same values, existing Desk markup keeps working. */
@@ -165,7 +167,7 @@ html[data-orstrax-theme] body {
 }
 
 .orstrax-lockup-name {
-  font-family: var(--orstrax-font-product);
+  font-family: var(--font-nunito, "Nunito"), "Nunito", ui-sans-serif, system-ui, sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
   line-height: 1;

@@ -14,7 +14,7 @@ Until DNS is attached, the Vercel deployment for this repo is the asset origin. 
 
 | Resource | URL |
 |---|---|
-| Pinned theme | `https://ui.orstrax.io/theme/v1.0.0/orstrax.css` |
+| Pinned theme | `https://ui.orstrax.io/theme/v1.0.7/orstrax.css` |
 | Promoted current | `https://ui.orstrax.io/theme/current/orstrax.css` |
 | Wordmark | `https://ui.orstrax.io/assets/orstrax-wordmark.png` |
 | Mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |

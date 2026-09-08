@@ -6,7 +6,7 @@
  */
 
 export const ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-export const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.6";
+export const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.7";
 
 export const ORSTRAX_URLS = {
   company: "https://orstrax.com",
