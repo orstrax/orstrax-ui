@@ -33,6 +33,7 @@ Extracted from Orstrax Desk production UI.
 | Font | Usage | Weight | Letter Spacing |
 |------|-------|--------|----------------|
 | **Inter** | UI text, buttons, navigation, forms | 400-600 | Normal |
+| **Nunito** | Product name in brand lockups (`.orstrax-lockup-name`) | 600 | -0.025em |
 | **Source Serif 4** | Display headings, titles | 600 | -0.02em |
 
 ### Scale
