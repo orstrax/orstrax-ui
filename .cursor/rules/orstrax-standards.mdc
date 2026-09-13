@@ -1,0 +1,12 @@
+---
+description: Canonical Orstrax standards live in this repo; update them when shared conventions change.
+alwaysApply: true
+---
+
+# Orstrax standards
+
+This repository holds `ORSTRAX_ENGINEERING_AND_PRODUCT_STANDARDS.md`.
+
+Read it before changing theme URLs, assets, tokens, or consumer guidance.
+
+If you establish a new cross-Orstrax convention, update that file in the same change. Do not leave stale paths in AGENTS.md or README.

@@ -1,0 +1,14 @@
+---
+description: Follow canonical Orstrax engineering and product standards before changing this project.
+alwaysApply: true
+---
+
+# Orstrax standards
+
+Before making changes, read:
+
+https://github.com/orstrax/orstrax-ui/blob/main/ORSTRAX_ENGINEERING_AND_PRODUCT_STANDARDS.md
+
+If this machine has a sibling checkout, also read `../orstrax-ui/ORSTRAX_ENGINEERING_AND_PRODUCT_STANDARDS.md`.
+
+Do not duplicate that document here. Product exceptions live in root `AGENTS.md`.

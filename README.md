@@ -2,6 +2,10 @@
 
 Central **runtime theme** for Orstrax-branded software.
 
+**Cross-product standards** (agents, branding, Desk, Resend, new projects): [`ORSTRAX_ENGINEERING_AND_PRODUCT_STANDARDS.md`](./ORSTRAX_ENGINEERING_AND_PRODUCT_STANDARDS.md)
+
+New project starter: [`templates/new-orstrax-project/`](./templates/new-orstrax-project/)
+
 This is not “install a package and copy styles at build time.” Consumer apps load the hosted stylesheet and canonical brand assets from one deployed origin. Changing the promoted theme or the wordmark file here is how every Orstrax-branded app receives the visual change.
 
 Independent brands (Ecloras, Financial Fern, Sunday Maker) must not load this theme.
