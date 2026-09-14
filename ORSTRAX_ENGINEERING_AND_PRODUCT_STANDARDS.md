@@ -157,6 +157,8 @@ MUST NOT turn Desk into an SEO article farm. MUST NOT turn Resources into produc
 6. Product Hub Resource update?
 7. Product page or App Store copy?
 
+For **Print Manager**, Desk articles live in `orstrax-desk/content/import/hub/print-manager/`. Changing app UX without updating those articles (and bumping `SEED_VERSION` with a migration that upserts them) leaves Help empty or stale for existing installs.
+
 **VERIFIED Orderflow Help path:** Desk repo `content/import/hub/orders/`.  
 **VERIFIED Print Manager Help path:** Desk repo `content/import/hub/print-manager/`.  
 Production republish requires bumping `SEED_VERSION` in `orstrax-desk/src/lib/store/firestore.ts`.
