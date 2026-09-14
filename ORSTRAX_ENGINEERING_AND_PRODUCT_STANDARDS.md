@@ -69,6 +69,7 @@ Orstrax is the company. Orderflow, Desk, Admin, and Print Manager are products.
 | Orderflow Help | https://desk.orstrax.io/orderflow |
 | Admin | https://admin.orstrax.io |
 | Print Manager | https://printmanager.orstrax.io |
+| Print Manager Help | https://desk.orstrax.io/print-manager |
 | Shared UI | https://ui.orstrax.io |
 | Desk custom-domain CNAME | `cname.desk.orstrax.io` |
 | Desk inbound mail | `inbound.desk.orstrax.io` |
@@ -156,9 +157,11 @@ MUST NOT turn Desk into an SEO article farm. MUST NOT turn Resources into produc
 6. Product Hub Resource update?
 7. Product page or App Store copy?
 
-**VERIFIED Orderflow Help path:** Desk repo `content/import/hub/orders/`. Production republish requires bumping `SEED_VERSION` in `orstrax-desk/src/lib/store/firestore.ts`.
+**VERIFIED Orderflow Help path:** Desk repo `content/import/hub/orders/`.  
+**VERIFIED Print Manager Help path:** Desk repo `content/import/hub/print-manager/`.  
+Production republish requires bumping `SEED_VERSION` in `orstrax-desk/src/lib/store/firestore.ts`.
 
-**VERIFIED Help URLs:** Orderflow `https://desk.orstrax.io/orderflow`; Desk product `https://desk.orstrax.io/help`.
+**VERIFIED Help URLs:** Orderflow `https://desk.orstrax.io/orderflow`; Desk product `https://desk.orstrax.io/help`; Print Manager `https://desk.orstrax.io/print-manager`.
 
 ---
 
