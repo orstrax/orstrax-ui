@@ -40,11 +40,12 @@ Ask on every new shared pattern: *Is this product-specific, or should it become 
 | Orstrax Desk | Multi-tenant help center / knowledge base / tickets | Orstrax-branded product |
 | Orstrax Admin | Orstrax-wide control plane | Orstrax-branded product |
 | Orstrax Product Hub | Product directory + Resources on orstrax.io | Orstrax-branded product |
+| Orstrax Print Manager | macOS printer page / ink / cost tracking | Orstrax-branded product |
 | Ecloras | Independent portfolio product | Independent brand |
 | Financial Fern | Independent portfolio product | Independent brand |
 | Sunday Maker | Independent portfolio product | Independent brand |
 
-Orstrax is the company. Orderflow, Desk, and Admin are products.
+Orstrax is the company. Orderflow, Desk, Admin, and Print Manager are products.
 
 **STANDARD:** In product-facing prose, once context is set, use the product name.
 
@@ -67,6 +68,7 @@ Orstrax is the company. Orderflow, Desk, and Admin are products.
 | Desk Help (Desk product) | https://desk.orstrax.io/help (also https://help.orstrax.io) |
 | Orderflow Help | https://desk.orstrax.io/orderflow |
 | Admin | https://admin.orstrax.io |
+| Print Manager | https://printmanager.orstrax.io |
 | Shared UI | https://ui.orstrax.io |
 | Desk custom-domain CNAME | `cname.desk.orstrax.io` |
 | Desk inbound mail | `inbound.desk.orstrax.io` |
@@ -115,7 +117,7 @@ Orstrax app → https://ui.orstrax.io → shared visual updates propagate
 
 **STANDARD:** MUST use the hosted wordmark and mark above. MUST NOT redraw, type out, or locally fork the Orstrax wordmark.
 
-**STANDARD:** Product lockup is `[canonical wordmark image] + [product name as text]`. Examples: Orstrax + Orderflow, Orstrax + Desk, Orstrax + Admin. MUST NOT create a combined logo file per product unless the owner explicitly requests it.
+**STANDARD:** Product lockup is `[canonical wordmark image] + [product name as text]`. Examples: Orstrax + Orderflow, Orstrax + Desk, Orstrax + Admin, Orstrax + Print Manager. MUST NOT create a combined logo file per product unless the owner explicitly requests it.
 
 Changing `public/assets/orstrax-wordmark.png` on ui.orstrax.io SHOULD update Orstrax-branded products without replacing five logos.
 
