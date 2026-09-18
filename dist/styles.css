@@ -39,8 +39,9 @@
     Georgia,
     serif;
   --orstrax-font-product:
+    "Semplicita",
+    "Semplicita Pro",
     var(--font-nunito, "Nunito"),
-    "Nunito",
     ui-sans-serif,
     system-ui,
     sans-serif;
@@ -53,6 +54,13 @@
   --orx-navy: var(--orstrax-nav);
   --orx-accent: var(--orstrax-accent);
   --orx-radius: var(--orstrax-radius-md);
+}
+@font-face {
+  font-family: "Semplicita";
+  src: url(https://ui.orstrax.io/fonts/Semplicita-Bold.woff2) format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 .orstrax-app,
 .desk-app,
@@ -140,14 +148,9 @@ html[data-orstrax-theme] body {
   object-position: left;
 }
 .orstrax-lockup-name {
-  font-family:
-    var(--font-nunito, "Nunito"),
-    "Nunito",
-    ui-sans-serif,
-    system-ui,
-    sans-serif;
+  font-family: var(--orstrax-font-product);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.025em;
   color: var(--orstrax-accent);

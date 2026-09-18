@@ -46,9 +46,7 @@
 
   --orstrax-font-ui: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
   --orstrax-font-display: var(--font-source-serif), "Source Serif 4", ui-serif, Georgia, serif;
-  /* Prefer next/font --font-nunito; keep a named fallback so the stack stays valid
-     even before the variable is defined on <html>. */
-  --orstrax-font-product: var(--font-nunito, "Nunito"), "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --orstrax-font-product: "Semplicita", "Semplicita Pro", var(--font-nunito, "Nunito"), ui-sans-serif, system-ui, sans-serif;
   --orstrax-shadow: 0 12px 40px rgba(28, 25, 21, 0.06);
 
   /* Desk aliases — same values, existing Desk markup keeps working. */
@@ -60,6 +58,14 @@
   --orx-navy: var(--orstrax-nav);
   --orx-accent: var(--orstrax-accent);
   --orx-radius: var(--orstrax-radius-md);
+}
+
+@font-face {
+  font-family: "Semplicita";
+  src: url("https://ui.orstrax.io/fonts/Semplicita-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -167,9 +173,9 @@ html[data-orstrax-theme] body {
 }
 
 .orstrax-lockup-name {
-  font-family: var(--font-nunito, "Nunito"), "Nunito", ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--orstrax-font-product);
   font-size: 0.875rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1;
   letter-spacing: -0.025em;
   color: var(--orstrax-accent);

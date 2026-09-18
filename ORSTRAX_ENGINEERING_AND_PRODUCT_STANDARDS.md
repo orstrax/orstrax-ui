@@ -97,20 +97,21 @@ Orstrax app → https://ui.orstrax.io → shared visual updates propagate
 
 | Resource | URL |
 |---|---|
-| Pinned theme (current apps) | `https://ui.orstrax.io/theme/v1.0.7/orstrax.css` |
+| Pinned theme (current apps) | `https://ui.orstrax.io/theme/v1.0.8/orstrax.css` |
 | Promoted current | `https://ui.orstrax.io/theme/current/orstrax.css` |
 | Wordmark | `https://ui.orstrax.io/assets/orstrax-wordmark.png` |
 | Mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
+| Product-name font | `https://ui.orstrax.io/fonts/Semplicita-Bold.woff2` |
 
-**VERIFIED env:** `NEXT_PUBLIC_ORSTRAX_UI_ORIGIN` (default `https://ui.orstrax.io`). Theme **version** is pinned in code (`ORSTRAX_THEME_VERSION = "v1.0.7"`). MUST NOT set `NEXT_PUBLIC_ORSTRAX_THEME_VERSION` in Vercel — stale env kept apps on old CSS.
+**VERIFIED env:** `NEXT_PUBLIC_ORSTRAX_UI_ORIGIN` (default `https://ui.orstrax.io`). Theme **version** is pinned in code (`ORSTRAX_THEME_VERSION = "v1.0.8"`). MUST NOT set `NEXT_PUBLIC_ORSTRAX_THEME_VERSION` in Vercel — stale env kept apps on old CSS.
 
 **STANDARD:** Production apps MUST pin a versioned CSS URL (`/theme/vX.Y.Z/orstrax.css`). `/theme/current/` MAY be used for staging only. Bump the pin when promoting a validated orstrax-ui release.
 
-**VERIFIED consumer pattern:** `<link rel="stylesheet" href={ORSTRAX_THEME_HREF} />`, Inter / Nunito / Source Serif 4 on `<html>`, `data-orstrax-theme` on `<html>`. Optional package: `@orstrax/ui` (`github:orstrax/orstrax-ui#v1.0.7`). Runtime CSS from the host is the source of truth; the npm package is optional React primitives.
+**VERIFIED consumer pattern:** `<link rel="stylesheet" href={ORSTRAX_THEME_HREF} />`, Inter / Source Serif 4 on `<html>`, `data-orstrax-theme` on `<html>`. Product names load Semplicita Bold from the hosted theme. Nunito MAY remain for Desk tenant Help themes. Optional package: `@orstrax/ui` (`github:orstrax/orstrax-ui#v1.0.8`). Runtime CSS from the host is the source of truth; the npm package is optional React primitives.
 
 **STANDARD:** Product-specific UI MAY stay local (Orderflow order table, Desk editor). MUST NOT invent a second Orstrax color/type/button/auth system.
 
-**VERIFIED tokens** (from orstrax-ui `TOKENS.md`): cream `--orx-bg #f4efe6`, surface `#fffcf7`, ink `#1c1915`, muted `#6f675c`, line `#e4dcd0`, navy `#1f2a37`, accent `#2f5da8`. UI font Inter; product-name lockups Nunito; display Source Serif 4.
+**VERIFIED tokens** (from orstrax-ui `TOKENS.md`): cream `--orx-bg #f4efe6`, surface `#fffcf7`, ink `#1c1915`, muted `#6f675c`, line `#e4dcd0`, navy `#1f2a37`, accent `#2f5da8`. UI font Inter; product-name lockups Semplicita Bold; display Source Serif 4.
 
 ---
 
@@ -407,7 +408,7 @@ Next.js apps MUST keep the `<!-- BEGIN:nextjs-agent-rules -->` block; `next dev`
 | Orderflow public host | `orderflow.orstrax.io` (current app, Shopify app URL) | `orders.orstrax.io` in older hub/monolith/firebase authorizedDomains | Use **orderflow.orstrax.io** in new copy. Keep legacy redirect. Do not delete legacy without owner approval. |
 | Orderflow Help URL | `https://desk.orstrax.io/orderflow` (Orderflow, Desk, ui runtime) | Admin historically `https://desk.orstrax.io/orders` | Desk redirects `orders` → `orderflow`. New links MUST use `/orderflow`. |
 | Independent Help URLs on orstrax.com | Desk: `desk.orstrax.io/ecloras`, `/financial-fern`, `/sunday-maker` | orstrax.com historically linked some Help at `orstrax.io/help/...` and Sunday Maker `/resources` | **DECISION** before changing company-site links. Sunday Maker Help chrome is `/resources` on Desk. |
-| Shared CSS | Apps pin `v1.0.7` | Hub monolith checkout may not load ui.orstrax.io | Orstrax-branded surfaces SHOULD pin `v1.0.7`. |
+| Shared CSS | Apps pin `v1.0.8` | Hub monolith checkout may not load ui.orstrax.io | Orstrax-branded surfaces SHOULD pin `v1.0.8`. |
 | Email | Resend default | Orderflow SMTP option; Sunday Maker extra providers | Document; do not rip out. |
 
 ---

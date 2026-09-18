@@ -23,7 +23,7 @@ PRODUCT:              Orstrax UI (runtime theme + optional React primitives)
 PRODUCTION URL:       https://ui.orstrax.io
 HELP CENTER:          https://desk.orstrax.io/help (Desk product; this repo is not a Help Center)
 BRAND TYPE:           orstrax-branded (shared infrastructure)
-SHARED UI:            this repo hosts it; pinned consumer version v1.0.7
+SHARED UI:            this repo hosts it; pinned consumer version v1.0.8
 EMAIL:                none
 DEPLOYMENT:           Vercel project orstrax-ui
 IMPORTANT INTEGRATIONS: none (static theme/assets)

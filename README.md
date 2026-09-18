@@ -18,7 +18,7 @@ Until DNS is attached, the Vercel deployment for this repo is the asset origin. 
 
 | Resource | URL |
 |---|---|
-| Pinned theme | `https://ui.orstrax.io/theme/v1.0.7/orstrax.css` |
+| Pinned theme | `https://ui.orstrax.io/theme/v1.0.8/orstrax.css` |
 | Promoted current | `https://ui.orstrax.io/theme/current/orstrax.css` |
 | Wordmark | `https://ui.orstrax.io/assets/orstrax-wordmark.png` |
 | Mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
@@ -33,7 +33,7 @@ In the root layout:
 <link rel="stylesheet" href="https://ui.orstrax.io/theme/v1.0.0/orstrax.css" />
 ```
 
-Set Inter (`--font-inter`), Nunito (`--font-nunito`), and Source Serif 4 (`--font-source-serif`) on `<html>`. Product names in lockups use Nunito. Put `data-orstrax-theme` on `<html>` so shadcn/Tailwind tokens map onto Desk values.
+Set Inter (`--font-inter`) and Source Serif 4 (`--font-source-serif`) on `<html>`. Product names in lockups use Semplicita Bold from the hosted theme. Put `data-orstrax-theme` on `<html>` so shadcn/Tailwind tokens map onto Desk values.
 
 Lockup pattern: canonical wordmark image + product name as text.
 
