@@ -18,10 +18,11 @@ Until DNS is attached, the Vercel deployment for this repo is the asset origin. 
 
 | Resource | URL |
 |---|---|
-| Pinned theme | `https://ui.orstrax.io/theme/v1.0.8/orstrax.css` |
+| Pinned theme | `https://ui.orstrax.io/theme/v1.0.9/orstrax.css` |
 | Promoted current | `https://ui.orstrax.io/theme/current/orstrax.css` |
+| Family X | `https://ui.orstrax.io/assets/orstrax-x.png` |
 | Wordmark | `https://ui.orstrax.io/assets/orstrax-wordmark.png` |
-| Mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
+| App-icon mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
 
 Production apps should pin a **versioned** CSS URL (`/theme/v1.0.0/...`). `/theme/current/` only moves after a version is validated.
 
@@ -35,14 +36,13 @@ In the root layout:
 
 Set Inter (`--font-inter`) and Source Serif 4 (`--font-source-serif`) on `<html>`. Product names in lockups use Semplicita Bold from the hosted theme. Put `data-orstrax-theme` on `<html>` so shadcn/Tailwind tokens map onto Desk values.
 
-Lockup pattern: canonical wordmark image + product name as text.
+Lockup pattern: hosted Orstrax X + product name as text.
 
 ```tsx
-<img src="https://ui.orstrax.io/assets/orstrax-wordmark.png" alt="Orstrax" />
-Desk
+<OrstraxProductBrand productName="Orderflow" />
 ```
 
-`OrstraxProductBrand` in this package does that and reads the same asset URL.
+`OrstraxProductBrand` reads the hosted X and applies Semplicita + `#13293d` from the theme. Do not recreate the lockup locally.
 
 ## Layers
 

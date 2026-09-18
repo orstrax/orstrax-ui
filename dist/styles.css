@@ -7,6 +7,7 @@
   --orstrax-border: #e4dcd0;
   --orstrax-nav: #1f2a37;
   --orstrax-accent: #2f5da8;
+  --orstrax-product-name: #13293d;
   --orstrax-success: #065f46;
   --orstrax-warning: #d97706;
   --orstrax-error: #991b1b;
@@ -132,8 +133,8 @@ html[data-orstrax-theme] body {
 .orstrax-lockup {
   display: inline-flex;
   max-width: 100%;
-  align-items: flex-end;
-  gap: 0.4em;
+  align-items: center;
+  gap: 0.4rem;
   color: inherit;
   text-decoration: none;
 }
@@ -142,26 +143,25 @@ html[data-orstrax-theme] body {
   display: block;
   height: 1.25rem;
   width: auto;
-  max-width: min(100%, 11rem);
+  max-width: 1.5rem;
   flex-shrink: 0;
   object-fit: contain;
-  object-position: left;
+  object-position: center;
 }
 .orstrax-lockup-name {
   font-family: var(--orstrax-font-product);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.025em;
-  color: var(--orstrax-accent);
-  margin-bottom: 0.12em;
+  color: var(--orstrax-product-name);
 }
 .orstrax-app .orstrax-lockup-name,
 .desk-app .orstrax-lockup-name,
 .hub .orstrax-lockup-name,
 .orstrax-auth .orstrax-lockup-name,
 .desk-login .orstrax-lockup-name {
-  color: var(--orstrax-accent);
+  color: var(--orstrax-product-name);
 }
 .desk-help .orstrax-lockup-name {
   color: var(--desk-accent);
@@ -176,46 +176,50 @@ html[data-orstrax-theme] body {
 .desk-app .orstrax-lockup-name--ink {
   color: var(--orstrax-text);
 }
+.orstrax-lockup-name--accent,
+.orstrax-app .orstrax-lockup-name--accent,
+.desk-app .orstrax-lockup-name--accent {
+  color: var(--orstrax-accent);
+}
 a.orstrax-lockup-link {
   color: inherit;
   text-decoration: none;
 }
 .orstrax-lockup--md {
-  gap: 0.5rem;
+  gap: 0.45rem;
 }
 .orstrax-lockup--md img,
 .orstrax-lockup--md .orstrax-lockup-mark {
-  height: 1.75rem;
+  height: 1.5rem;
+  max-width: 1.75rem;
 }
 .orstrax-lockup--md .orstrax-lockup-name {
-  font-size: 1rem;
-  margin-bottom: 0.16em;
+  font-size: 1.125rem;
 }
 .orstrax-lockup--lg {
-  gap: 0.55rem;
+  gap: 0.5rem;
 }
 .orstrax-lockup--lg img,
 .orstrax-lockup--lg .orstrax-lockup-mark {
-  height: 2rem;
+  height: 1.75rem;
+  max-width: 2rem;
 }
 .orstrax-lockup--lg .orstrax-lockup-name {
-  font-size: 1.25rem;
-  margin-bottom: 0.2em;
+  font-size: 1.375rem;
 }
 @media (min-width: 640px) {
   .orstrax-lockup--lg img,
   .orstrax-lockup--lg .orstrax-lockup-mark {
-    height: 2.25rem;
+    height: 2rem;
+    max-width: 2.25rem;
   }
   .orstrax-lockup--lg .orstrax-lockup-name {
     font-size: 1.5rem;
-    margin-bottom: 0.22em;
   }
 }
-.orstrax-auth-panel a[aria-label^=Orstrax] .orstrax-lockup-name,
-.orstrax-auth-panel a[aria-label^=Orstrax] span.font-semibold,
-.desk-login a[aria-label^=Orstrax] span.font-semibold {
-  color: var(--orstrax-accent);
+.orstrax-auth-panel .orstrax-lockup-name,
+.desk-login .orstrax-lockup-name {
+  color: var(--orstrax-product-name);
 }
 .orstrax-app :focus-visible,
 .desk-app :focus-visible,

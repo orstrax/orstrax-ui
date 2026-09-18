@@ -10,7 +10,7 @@ Keep this file short. Product exceptions belong in the addendum below, not as a 
 Highest-risk rules:
 
 - Orstrax-branded products MUST load hosted `ui.orstrax.io` CSS. MUST NOT copy or fork the theme.
-- MUST use the hosted wordmark/mark. Lockup = wordmark image + product name text.
+- MUST use the hosted family X + product name. Lockup = `[X] Orderflow` (or Desk / Admin). MUST NOT recreate the X locally.
 - Independent brands (Ecloras, Financial Fern, Sunday Maker) MUST NOT load the Orstrax theme.
 - Customer Help belongs in Orstrax Desk. Feature work is not done until Help/Resources/marketing impact is checked.
 - MUST use Resend for application email unless this addendum documents an approved exception.

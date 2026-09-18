@@ -1,6 +1,6 @@
 // src/runtime.ts
 var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.8";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.9";
 var ORSTRAX_URLS = {
   company: "https://orstrax.com",
   hub: "https://www.orstrax.io",
@@ -28,7 +28,8 @@ function orstraxAssetHref(file) {
 }
 var ORSTRAX_WORDMARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-wordmark.png`;
 var ORSTRAX_MARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-mark.png`;
+var ORSTRAX_X_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-x.png`;
 
-export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin };
+export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, ORSTRAX_X_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin };
 //# sourceMappingURL=runtime.mjs.map
 //# sourceMappingURL=runtime.mjs.map

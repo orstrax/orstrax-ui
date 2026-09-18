@@ -94,7 +94,7 @@ export interface OrstraxAppShellProps {
  * @example
  * ```tsx
  * <OrstraxAppShell
- *   productName="Orders"
+ *   productName="Orderflow"
  *   tagline="Smart order management."
  *   navigation={[
  *     {

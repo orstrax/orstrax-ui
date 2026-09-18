@@ -97,31 +97,36 @@ Orstrax app → https://ui.orstrax.io → shared visual updates propagate
 
 | Resource | URL |
 |---|---|
-| Pinned theme (current apps) | `https://ui.orstrax.io/theme/v1.0.8/orstrax.css` |
+| Pinned theme (current apps) | `https://ui.orstrax.io/theme/v1.0.9/orstrax.css` |
 | Promoted current | `https://ui.orstrax.io/theme/current/orstrax.css` |
+| Family X | `https://ui.orstrax.io/assets/orstrax-x.png` |
 | Wordmark | `https://ui.orstrax.io/assets/orstrax-wordmark.png` |
-| Mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
+| App-icon mark | `https://ui.orstrax.io/assets/orstrax-mark.png` |
 | Product-name font | `https://ui.orstrax.io/fonts/Semplicita-Bold.woff2` |
 
-**VERIFIED env:** `NEXT_PUBLIC_ORSTRAX_UI_ORIGIN` (default `https://ui.orstrax.io`). Theme **version** is pinned in code (`ORSTRAX_THEME_VERSION = "v1.0.8"`). MUST NOT set `NEXT_PUBLIC_ORSTRAX_THEME_VERSION` in Vercel — stale env kept apps on old CSS.
+**VERIFIED env:** `NEXT_PUBLIC_ORSTRAX_UI_ORIGIN` (default `https://ui.orstrax.io`). Theme **version** is pinned in code (`ORSTRAX_THEME_VERSION = "v1.0.9"`). MUST NOT set `NEXT_PUBLIC_ORSTRAX_THEME_VERSION` in Vercel — stale env kept apps on old CSS.
 
 **STANDARD:** Production apps MUST pin a versioned CSS URL (`/theme/vX.Y.Z/orstrax.css`). `/theme/current/` MAY be used for staging only. Bump the pin when promoting a validated orstrax-ui release.
 
-**VERIFIED consumer pattern:** `<link rel="stylesheet" href={ORSTRAX_THEME_HREF} />`, Inter / Source Serif 4 on `<html>`, `data-orstrax-theme` on `<html>`. Product names load Semplicita Bold from the hosted theme. Nunito MAY remain for Desk tenant Help themes. Optional package: `@orstrax/ui` (`github:orstrax/orstrax-ui#v1.0.8`). Runtime CSS from the host is the source of truth; the npm package is optional React primitives.
+**VERIFIED consumer pattern:** `<link rel="stylesheet" href={ORSTRAX_THEME_HREF} />`, Inter / Source Serif 4 on `<html>`, `data-orstrax-theme` on `<html>`. Product names load Semplicita Bold from the hosted theme. Nunito MAY remain for Desk tenant Help themes. Optional package: `@orstrax/ui` (`github:orstrax/orstrax-ui#v1.0.9`). Runtime CSS from the host is the source of truth; the npm package is optional React primitives.
 
 **STANDARD:** Product-specific UI MAY stay local (Orderflow order table, Desk editor). MUST NOT invent a second Orstrax color/type/button/auth system.
 
-**VERIFIED tokens** (from orstrax-ui `TOKENS.md`): cream `--orx-bg #f4efe6`, surface `#fffcf7`, ink `#1c1915`, muted `#6f675c`, line `#e4dcd0`, navy `#1f2a37`, accent `#2f5da8`. UI font Inter; product-name lockups Semplicita Bold; display Source Serif 4.
+**VERIFIED tokens** (from orstrax-ui `TOKENS.md`): cream `--orx-bg #f4efe6`, surface `#fffcf7`, ink `#1c1915`, muted `#6f675c`, line `#e4dcd0`, navy `#1f2a37`, accent `#2f5da8`, product name `#13293d`. UI font Inter; product-name lockups Semplicita Bold; display Source Serif 4.
 
 ---
 
 ## 5. Canonical brand assets
 
-**STANDARD:** MUST use the hosted wordmark and mark above. MUST NOT redraw, type out, or locally fork the Orstrax wordmark.
+**STANDARD:** Orstrax products use `[hosted Orstrax X] + [product name as text]`. The X is the shared family mark. The product name identifies the product (Orderflow, Desk, Admin, Print Manager).
 
-**STANDARD:** Product lockup is `[canonical wordmark image] + [product name as text]`. Examples: Orstrax + Orderflow, Orstrax + Desk, Orstrax + Admin, Orstrax + Print Manager. MUST NOT create a combined logo file per product unless the owner explicitly requests it.
+**STANDARD:** MUST consume the hosted X (`orstrax-x.png`) and `OrstraxProductBrand` (or the hosted `.orstrax-lockup` classes). MUST NOT redraw the X in CSS, SVG, text, or an icon library. MUST NOT create a combined logo file per product unless the owner explicitly requests it. MUST NOT recolor the X to match the product name.
 
-Changing `public/assets/orstrax-wordmark.png` on ui.orstrax.io SHOULD update Orstrax-branded products without replacing five logos.
+**STANDARD:** Product name color is `#13293d`. Product-name font is Semplicita Bold from the hosted theme. MUST NOT put “Orstrax” beside the X in the product lockup.
+
+The full wordmark (`orstrax-wordmark.png`) remains for company attribution (legal, email from Orstrax). The rounded mark (`orstrax-mark.png`) remains for square app icons and favicons — MUST NOT replace those with the horizontal product lockup.
+
+Changing `public/assets/orstrax-x.png` on ui.orstrax.io SHOULD update Orstrax-branded product lockups without replacing five logos.
 
 **EXCEPTION (current):** `orstrax.com` serves local `/orstrax%20logo%20new.png` and `/orstrax-mark.png` and uses Nunito + Newsreader, not the hosted theme. See §21.
 
@@ -408,7 +413,7 @@ Next.js apps MUST keep the `<!-- BEGIN:nextjs-agent-rules -->` block; `next dev`
 | Orderflow public host | `orderflow.orstrax.io` (current app, Shopify app URL) | `orders.orstrax.io` in older hub/monolith/firebase authorizedDomains | Use **orderflow.orstrax.io** in new copy. Keep legacy redirect. Do not delete legacy without owner approval. |
 | Orderflow Help URL | `https://desk.orstrax.io/orderflow` (Orderflow, Desk, ui runtime) | Admin historically `https://desk.orstrax.io/orders` | Desk redirects `orders` → `orderflow`. New links MUST use `/orderflow`. |
 | Independent Help URLs on orstrax.com | Desk: `desk.orstrax.io/ecloras`, `/financial-fern`, `/sunday-maker` | orstrax.com historically linked some Help at `orstrax.io/help/...` and Sunday Maker `/resources` | **DECISION** before changing company-site links. Sunday Maker Help chrome is `/resources` on Desk. |
-| Shared CSS | Apps pin `v1.0.8` | Hub monolith checkout may not load ui.orstrax.io | Orstrax-branded surfaces SHOULD pin `v1.0.8`. |
+| Shared CSS | Apps pin `v1.0.9` | Hub monolith checkout may not load ui.orstrax.io | Orstrax-branded surfaces SHOULD pin `v1.0.9`. |
 | Email | Resend default | Orderflow SMTP option; Sunday Maker extra providers | Document; do not rip out. |
 
 ---

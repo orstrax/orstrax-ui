@@ -1,4 +1,4 @@
-export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin } from './runtime.js';
+export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, ORSTRAX_X_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin } from './runtime.js';
 import React from 'react';
 
 /** Map Firebase Auth client errors to customer-safe copy. Never surface raw Firebase strings. */
@@ -30,6 +30,8 @@ declare const colors: {
     readonly navy: "#1f2a37";
     /** Accent blue for links and interactive elements - #2f5da8 */
     readonly accent: "#2f5da8";
+    /** Product name in brand lockups - #13293d */
+    readonly productName: "#13293d";
 };
 /**
  * Typography tokens
@@ -95,6 +97,7 @@ declare const cssVars: {
     readonly "--orstrax-border": "#e4dcd0";
     readonly "--orstrax-nav": "#1f2a37";
     readonly "--orstrax-accent": "#2f5da8";
+    readonly "--orstrax-product-name": "#13293d";
     readonly "--orstrax-radius-md": "0.625rem";
     readonly "--orx-bg": "#f4efe6";
     readonly "--orx-surface": "#fffcf7";
@@ -107,26 +110,28 @@ declare const cssVars: {
 };
 
 interface OrstraxProductBrandProps {
-    /** Product name to display next to the wordmark (e.g., "Desk", "Orderflow", "Admin") */
+    /** Product name beside the shared X (e.g. "Orderflow", "Desk", "Admin") */
     productName: string;
     /** Optional href for link wrapper */
     href?: string;
     /** Size variant */
     size?: "sm" | "md" | "lg";
-    /** Color tone. Default accent matches Orderflow’s product name. */
-    tone?: "accent" | "ink" | "muted";
+    /** Color tone. Default product navy is #13293d. */
+    tone?: "product" | "accent" | "ink" | "muted";
     /** Additional CSS classes */
     className?: string;
     /** Optional link component (e.g., Next.js Link) */
     LinkComponent?: React.ElementType;
-    /** Optional custom wordmark image source (defaults to shared Orstrax wordmark) */
+    /** Optional hosted X / mark override. Defaults to the shared Orstrax X. */
+    markSrc?: string;
+    /** @deprecated Use markSrc. Kept so older AuthLayout callers keep working. */
     wordmarkSrc?: string;
 }
 /**
- * Canonical Orstrax wordmark + product name.
- * Visuals (blue product name, baseline alignment, sizes) come from the hosted theme.
+ * Shared Orstrax family mark + product name.
+ * Visuals (X asset, Semplicita, #13293d, sizes) come from the hosted theme.
  */
-declare function OrstraxProductBrand({ productName, href, size, tone, className, LinkComponent, wordmarkSrc, }: OrstraxProductBrandProps): React.JSX.Element;
+declare function OrstraxProductBrand({ productName, href, size, tone, className, LinkComponent, markSrc, wordmarkSrc, }: OrstraxProductBrandProps): React.JSX.Element;
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "primary" | "secondary";
@@ -252,6 +257,8 @@ interface AuthLayoutProps {
     children: React.ReactNode;
     LinkComponent?: React.ElementType;
     brandHref?: string;
+    markSrc?: string;
+    /** @deprecated Use markSrc. */
     wordmarkSrc?: string;
     footer?: React.ReactNode;
 }
@@ -259,7 +266,7 @@ interface AuthLayoutProps {
  * Canonical Orstrax auth shell. Visuals come from the hosted theme CSS.
  * Product apps only pass identity + form content.
  */
-declare function AuthLayout({ productName, tagline, title, children, LinkComponent, brandHref, wordmarkSrc, footer, }: AuthLayoutProps): React.JSX.Element;
+declare function AuthLayout({ productName, tagline, title, children, LinkComponent, brandHref, markSrc, wordmarkSrc, footer, }: AuthLayoutProps): React.JSX.Element;
 declare function AuthFooter({ children }: {
     children: React.ReactNode;
 }): React.JSX.Element;

@@ -30,6 +30,9 @@ export const colors = {
   
   /** Accent blue for links and interactive elements - #2f5da8 */
   accent: "#2f5da8",
+
+  /** Product name in brand lockups - #13293d */
+  productName: "#13293d",
 } as const;
 
 /**
@@ -100,6 +103,7 @@ export const cssVars = {
   "--orstrax-border": colors.line,
   "--orstrax-nav": colors.navy,
   "--orstrax-accent": colors.accent,
+  "--orstrax-product-name": colors.productName,
   "--orstrax-radius-md": radius.default,
   "--orx-bg": colors.bg,
   "--orx-surface": colors.surface,

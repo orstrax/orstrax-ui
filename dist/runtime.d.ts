@@ -5,7 +5,7 @@
  * This module only builds those URLs — it does not bundle the theme.
  */
 declare const ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-declare const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.8";
+declare const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.9";
 declare const ORSTRAX_URLS: {
     readonly company: "https://orstrax.com";
     readonly hub: "https://www.orstrax.io";
@@ -21,5 +21,6 @@ declare function orstraxThemeHref(version?: string): string;
 declare function orstraxAssetHref(file: string): string;
 declare const ORSTRAX_WORDMARK_HREF = "https://ui.orstrax.io/assets/orstrax-wordmark.png";
 declare const ORSTRAX_MARK_HREF = "https://ui.orstrax.io/assets/orstrax-mark.png";
+declare const ORSTRAX_X_HREF = "https://ui.orstrax.io/assets/orstrax-x.png";
 
-export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin };
+export { ORSTRAX_MARK_HREF, ORSTRAX_THEME_DEFAULT_VERSION, ORSTRAX_UI_DEFAULT_ORIGIN, ORSTRAX_URLS, ORSTRAX_WORDMARK_HREF, ORSTRAX_X_HREF, orstraxAssetHref, orstraxThemeHref, orstraxThemeVersion, orstraxUiOrigin };

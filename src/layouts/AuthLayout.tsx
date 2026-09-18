@@ -8,6 +8,8 @@ export interface AuthLayoutProps {
   children: React.ReactNode;
   LinkComponent?: React.ElementType;
   brandHref?: string;
+  markSrc?: string;
+  /** @deprecated Use markSrc. */
   wordmarkSrc?: string;
   footer?: React.ReactNode;
 }
@@ -23,6 +25,7 @@ export function AuthLayout({
   children,
   LinkComponent,
   brandHref = "/",
+  markSrc,
   wordmarkSrc,
   footer,
 }: AuthLayoutProps) {
@@ -48,7 +51,7 @@ export function AuthLayout({
           size="lg"
           href={brandHref}
           LinkComponent={LinkComponent}
-          wordmarkSrc={wordmarkSrc}
+          markSrc={markSrc || wordmarkSrc}
         />
         <p className="orstrax-auth-tagline">{tagline}</p>
         <h1 className="orstrax-display desk-display orstrax-auth-title">{title}</h1>

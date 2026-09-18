@@ -6,7 +6,7 @@
  */
 
 export const ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-export const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.8";
+export const ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.9";
 
 export const ORSTRAX_URLS = {
   company: "https://orstrax.com",
@@ -41,3 +41,4 @@ export function orstraxAssetHref(file: string): string {
 
 export const ORSTRAX_WORDMARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-wordmark.png`;
 export const ORSTRAX_MARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-mark.png`;
+export const ORSTRAX_X_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-x.png`;

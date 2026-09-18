@@ -6,7 +6,7 @@ var react = require('react');
 
 // src/runtime.ts
 var ORSTRAX_UI_DEFAULT_ORIGIN = "https://ui.orstrax.io";
-var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.8";
+var ORSTRAX_THEME_DEFAULT_VERSION = "v1.0.9";
 var ORSTRAX_URLS = {
   company: "https://orstrax.com",
   hub: "https://www.orstrax.io",
@@ -34,6 +34,7 @@ function orstraxAssetHref(file) {
 }
 var ORSTRAX_WORDMARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-wordmark.png`;
 var ORSTRAX_MARK_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-mark.png`;
+var ORSTRAX_X_HREF = `${ORSTRAX_UI_DEFAULT_ORIGIN}/assets/orstrax-x.png`;
 
 // src/auth.ts
 var MESSAGES = {
@@ -90,7 +91,9 @@ var colors = {
   /** Dark navy for primary actions and navigation - #1f2a37 */
   navy: "#1f2a37",
   /** Accent blue for links and interactive elements - #2f5da8 */
-  accent: "#2f5da8"
+  accent: "#2f5da8",
+  /** Product name in brand lockups - #13293d */
+  productName: "#13293d"
 };
 var typography = {
   /** Primary UI font family */
@@ -141,6 +144,7 @@ var cssVars = {
   "--orstrax-border": colors.line,
   "--orstrax-nav": colors.navy,
   "--orstrax-accent": colors.accent,
+  "--orstrax-product-name": colors.productName,
   "--orstrax-radius-md": radius.default,
   "--orx-bg": colors.bg,
   "--orx-surface": colors.surface,
@@ -155,18 +159,19 @@ function OrstraxProductBrand({
   productName,
   href,
   size = "sm",
-  tone = "accent",
+  tone = "product",
   className = "",
   LinkComponent,
+  markSrc,
   wordmarkSrc
 }) {
-  const toneClass = tone === "muted" ? "orstrax-lockup-name--muted" : tone === "ink" ? "orstrax-lockup-name--ink" : "";
+  const toneClass = tone === "muted" ? "orstrax-lockup-name--muted" : tone === "ink" ? "orstrax-lockup-name--ink" : tone === "accent" ? "orstrax-lockup-name--accent" : "";
   const content = /* @__PURE__ */ jsxRuntime.jsxs("span", { className: `orstrax-lockup orstrax-lockup--${size} ${className}`.trim(), children: [
     /* @__PURE__ */ jsxRuntime.jsx(
       "img",
       {
-        src: wordmarkSrc || orstraxAssetHref("orstrax-wordmark.png"),
-        alt: "Orstrax",
+        src: markSrc || wordmarkSrc || orstraxAssetHref("orstrax-x.png"),
+        alt: "",
         className: "orstrax-lockup-mark"
       }
     ),
@@ -174,9 +179,9 @@ function OrstraxProductBrand({
   ] });
   if (href) {
     const Link = LinkComponent || "a";
-    return /* @__PURE__ */ jsxRuntime.jsx(Link, { href, className: "orstrax-lockup-link inline-flex max-w-full items-end", "aria-label": `Orstrax ${productName}`, children: content });
+    return /* @__PURE__ */ jsxRuntime.jsx(Link, { href, className: "orstrax-lockup-link inline-flex max-w-full items-center", "aria-label": productName, children: content });
   }
-  return /* @__PURE__ */ jsxRuntime.jsx("span", { className: "inline-flex max-w-full items-end", role: "img", "aria-label": `Orstrax ${productName}`, children: content });
+  return /* @__PURE__ */ jsxRuntime.jsx("span", { className: "inline-flex max-w-full items-center", role: "img", "aria-label": productName, children: content });
 }
 function PrimaryButton({ children, className, ...props }) {
   return /* @__PURE__ */ jsxRuntime.jsx(
@@ -336,6 +341,7 @@ function AuthLayout({
   children,
   LinkComponent,
   brandHref = "/",
+  markSrc,
   wordmarkSrc,
   footer
 }) {
@@ -364,7 +370,7 @@ function AuthLayout({
           size: "lg",
           href: brandHref,
           LinkComponent,
-          wordmarkSrc
+          markSrc: markSrc || wordmarkSrc
         }
       ),
       /* @__PURE__ */ jsxRuntime.jsx("p", { className: "orstrax-auth-tagline", children: tagline }),
@@ -533,6 +539,7 @@ exports.ORSTRAX_THEME_DEFAULT_VERSION = ORSTRAX_THEME_DEFAULT_VERSION;
 exports.ORSTRAX_UI_DEFAULT_ORIGIN = ORSTRAX_UI_DEFAULT_ORIGIN;
 exports.ORSTRAX_URLS = ORSTRAX_URLS;
 exports.ORSTRAX_WORDMARK_HREF = ORSTRAX_WORDMARK_HREF;
+exports.ORSTRAX_X_HREF = ORSTRAX_X_HREF;
 exports.OrstraxAppShell = OrstraxAppShell;
 exports.OrstraxProductBrand = OrstraxProductBrand;
 exports.PageHeader = PageHeader;

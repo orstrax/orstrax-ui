@@ -15,6 +15,7 @@ Extracted from Orstrax Desk production UI.
 | `--orx-line` | `#e4dcd0` | Borders and dividers |
 | `--orx-navy` | `#1f2a37` | Dark navy for primary actions and navigation |
 | `--orx-accent` | `#2f5da8` | Accent blue for links and interactive elements |
+| `--orstrax-product-name` | `#13293d` | Product name beside the family X |
 
 ### Usage in Desk
 
